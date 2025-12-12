@@ -6,13 +6,9 @@
     <title>DİREN | Akıllı Gaz Takip Sistemi</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
     <style>
@@ -29,17 +25,14 @@
         }
         h1, h2, h3, h4, h5 { font-family: 'Plus Jakarta Sans', sans-serif; }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
-        /* Animations */
         .fade-in { animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Glass Cards */
         .glass {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(12px);
@@ -47,7 +40,6 @@
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
-        /* Nav Active State */
         .nav-item.active {
             background-color: #e0f2fe;
             color: #0284c7;
@@ -55,11 +47,9 @@
         }
         .nav-item.active i { color: #0284c7; }
 
-        /* Chat Bubbles */
         .bubble-user { background: linear-gradient(135deg, #0ea5e9, #2563eb); color: white; border-radius: 16px 16px 0 16px; }
         .bubble-ai { background: white; border: 1px solid #e2e8f0; color: #1e293b; border-radius: 16px 16px 16px 0; }
         
-        /* Code Block Styling */
         pre { background: #1e293b !important; color: #e2e8f0; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; }
         
         .typing-dot { animation: typing 1.4s infinite ease-in-out both; }
@@ -103,7 +93,7 @@
                 
                 <div class="relative z-10 max-w-3xl">
                     <span class="inline-flex items-center gap-1.5 py-1 px-3 rounded-full bg-sky-500/20 border border-sky-500/30 text-sky-300 text-xs font-bold mb-6 backdrop-blur-sm">
-                        [cite_start]<i class="ri-file-list-3-line"></i> TEKNİK RAPOR ÖZETİ [cite: 6]
+                        <i class="ri-file-list-3-line"></i> TEKNİK RAPOR ÖZETİ
                     </span>
                     <h2 class="text-3xl md:text-5xl font-bold mb-6 leading-tight">Yeni Nesil Klima Gazı <br><span class="text-sky-400">Kaçak Tespit Sistemi</span></h2>
                     <p class="text-slate-300 text-lg leading-relaxed mb-8">
@@ -113,19 +103,19 @@
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center md:text-left">
                         <div>
                             <div class="text-3xl font-bold text-sky-400">A2L</div>
-                            [cite_start]<div class="text-xs text-slate-400 uppercase tracking-wide mt-1">Hedef Gaz Sınıfı [cite: 23]</div>
+                            <div class="text-xs text-slate-400 uppercase tracking-wide mt-1">Hedef Gaz Sınıfı</div>
                         </div>
                         <div>
                             <div class="text-3xl font-bold text-sky-400">%14.4</div>
-                            [cite_start]<div class="text-xs text-slate-400 uppercase tracking-wide mt-1">R-32 LFL Limiti [cite: 32]</div>
+                            <div class="text-xs text-slate-400 uppercase tracking-wide mt-1">R-32 LFL Limiti</div>
                         </div>
                         <div>
                             <div class="text-3xl font-bold text-sky-400">IoT</div>
-                            [cite_start]<div class="text-xs text-slate-400 uppercase tracking-wide mt-1">MQTT & Flutter [cite: 33]</div>
+                            <div class="text-xs text-slate-400 uppercase tracking-wide mt-1">MQTT & Flutter</div>
                         </div>
                         <div>
                             <div class="text-3xl font-bold text-sky-400">12</div>
-                            [cite_start]<div class="text-xs text-slate-400 uppercase tracking-wide mt-1">Haftalık Plan [cite: 205]</div>
+                            <div class="text-xs text-slate-400 uppercase tracking-wide mt-1">Haftalık Plan</div>
                         </div>
                     </div>
                 </div>
@@ -137,7 +127,7 @@
                         <i class="ri-alert-fill text-orange-500"></i> Problem: Yanıcılık
                     </h3>
                     <p class="text-slate-600 text-sm leading-relaxed">
-                        Çevresel regülasyonlar (Kigali Değişikliği) nedeniyle R-410A yerini <strong>R-32</strong>'ye bırakıyor. [cite_start]R-32 "Düşük Yanıcı" (A2L) sınıfındadır[cite: 19]. [cite_start]Kapalı alanlarda sızıntı, patlayıcı konsantrasyona ulaşabilir[cite: 24]. Mevcut sistemler eski gazlara göre tasarlanmıştır.
+                        Çevresel regülasyonlar (Kigali Değişikliği) nedeniyle R-410A yerini <strong>R-32</strong>'ye bırakıyor. R-32 "Düşük Yanıcı" (A2L) sınıfındadır. Kapalı alanlarda sızıntı, patlayıcı konsantrasyona ulaşabilir. Mevcut sistemler eski gazlara göre tasarlanmıştır.
                     </p>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
@@ -145,7 +135,7 @@
                         <i class="ri-checkbox-circle-fill text-green-500"></i> Çözüm: Seçici Sensör
                     </h3>
                     <p class="text-slate-600 text-sm leading-relaxed">
-                        [cite_start]Sıradan hava kalitesi sensörleri (MQ-135) temizlik malzemelerine (alkol) bile alarm verir[cite: 74]. [cite_start]Proje, <strong>soğutucu gazlara özel filtrelenmiş</strong> endüstriyel sensörler (TGS2630/ZRT510) ve güvenli donanım mimarisi kullanır[cite: 8].
+                        Sıradan hava kalitesi sensörleri (MQ-135) temizlik malzemelerine (alkol) bile alarm verir. Proje, <strong>soğutucu gazlara özel filtrelenmiş</strong> endüstriyel sensörler (TGS2630/ZRT510) ve güvenli donanım mimarisi kullanır.
                     </p>
                 </div>
             </div>
@@ -160,15 +150,15 @@
                             <i class="ri-download-2-line text-2xl bg-white/20 p-2 rounded-lg"></i>
                             <div>
                                 <h3 class="font-bold">Kritik Fizik Kuralı</h3>
-                                [cite_start]<p class="text-xs text-blue-100">R-32 Yoğunluğu > Hava [cite: 56]</p>
+                                <p class="text-xs text-blue-100">R-32 Yoğunluğu > Hava</p>
                             </div>
                         </div>
                         <p class="text-sm text-blue-50 leading-relaxed mb-4">
-                            Soğutucu gazlar havadan ağırdır (Bağıl yoğunluk ~1.8). [cite_start]Kaçak anında gaz <strong>zemine çöker</strong>[cite: 59]. 
+                            Soğutucu gazlar havadan ağırdır (Bağıl yoğunluk ~1.8). Kaçak anında gaz <strong>zemine çöker</strong>. 
                         </p>
                         <div class="bg-white/10 rounded-lg p-3 border border-white/20">
                             <p class="text-xs font-semibold text-center">
-                                [cite_start]<i class="ri-map-pin-line"></i> Montaj: Zeminden 30-50 cm [cite: 61]
+                                <i class="ri-map-pin-line"></i> Montaj: Zeminden 30-50 cm
                             </p>
                         </div>
                     </div>
@@ -190,7 +180,7 @@
 
                 <div class="w-full md:w-2/3 bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
                     <div class="flex justify-between items-center mb-6">
-                        [cite_start]<h3 class="font-bold text-lg text-slate-800">Sensör Teknolojileri Analizi [cite: 68]</h3>
+                        <h3 class="font-bold text-lg text-slate-800">Sensör Teknolojileri Analizi</h3>
                         <span class="text-xs text-slate-400">Rapor Bölüm 3.4</span>
                     </div>
 
@@ -211,20 +201,20 @@
                             <tbody class="divide-y divide-slate-100">
                                 <tr class="opacity-50">
                                     <td class="p-3 font-mono text-red-500">MQ-135 / MQ-2</td>
-                                    [cite_start]<td class="p-3">Hobi Sınıfı MOS [cite: 73]</td>
-                                    [cite_start]<td class="p-3 text-red-500">Çok Yüksek [cite: 74]</td>
+                                    <td class="p-3">Hobi Sınıfı MOS</td>
+                                    <td class="p-3 text-red-500">Çok Yüksek</td>
                                     <td class="p-3"><span class="px-2 py-1 bg-red-100 text-red-700 rounded text-xs font-bold">REDDEDİLDİ</span></td>
                                 </tr>
                                 <tr class="bg-sky-50/50">
                                     <td class="p-3 font-mono font-bold text-sky-700">Figaro TGS2630</td>
-                                    [cite_start]<td class="p-3">Filtreli MOS [cite: 84]</td>
-                                    [cite_start]<td class="p-3 text-green-600">Düşük (Karbon Filtreli) [cite: 90]</td>
+                                    <td class="p-3">Filtreli MOS</td>
+                                    <td class="p-3 text-green-600">Düşük (Karbon Filtreli)</td>
                                     <td class="p-3"><span class="px-2 py-1 bg-sky-100 text-sky-700 rounded text-xs font-bold">ÖNERİLEN</span></td>
                                 </tr>
                                 <tr>
                                     <td class="p-3 font-mono text-slate-700">Winsen ZRT510</td>
-                                    [cite_start]<td class="p-3">NDIR (Kızılötesi) [cite: 100]</td>
-                                    [cite_start]<td class="p-3 text-green-600">Yok (Mükemmel) [cite: 101]</td>
+                                    <td class="p-3">NDIR (Kızılötesi)</td>
+                                    <td class="p-3 text-green-600">Yok (Mükemmel)</td>
                                     <td class="p-3"><span class="px-2 py-1 bg-slate-100 text-slate-600 rounded text-xs">Pahalı Alternatif</span></td>
                                 </tr>
                             </tbody>
@@ -245,7 +235,7 @@
                             <i class="ri-cpu-line text-2xl"></i>
                         </div>
                         <h4 class="font-bold text-slate-700">ESP32 Geliştirme Kartı</h4>
-                        [cite_start]<p class="text-xs text-slate-500 mt-2 mb-3">Arduino yerine tercih edilmelidir[cite: 118].</p>
+                        <p class="text-xs text-slate-500 mt-2 mb-3">Arduino yerine tercih edilmelidir.</p>
                         <ul class="text-xs space-y-2 text-slate-600">
                             <li class="flex gap-2"><i class="ri-wifi-line text-sky-500"></i> Dahili Wi-Fi & Bluetooth (IoT)</li>
                             <li class="flex gap-2"><i class="ri-speed-line text-sky-500"></i> Çift Çekirdekli Güçlü İşlemci</li>
@@ -263,7 +253,7 @@
                             <i class="ri-sensor-fill text-2xl"></i>
                         </div>
                         <h4 class="font-bold text-slate-700">Figaro TGS Sensör</h4>
-                        [cite_start]<p class="text-xs text-slate-500 mt-2 mb-3">Figaro TGS serisi önerilmektedir[cite: 84].</p>
+                        <p class="text-xs text-slate-500 mt-2 mb-3">Figaro TGS serisi önerilmektedir.</p>
                         <ul class="text-xs space-y-2 text-slate-600 mb-4">
                             <li class="flex gap-2"><i class="ri-filter-3-line text-green-500"></i> Aktif Karbon Filtreli</li>
                             <li class="flex gap-2"><i class="ri-flashlight-line text-orange-500"></i> 5V Çalışma Gerilimi</li>
@@ -282,8 +272,8 @@
                         <h4 class="font-bold text-slate-700">Güvenlik & Güç Katı</h4>
                         <p class="text-xs text-slate-500 mt-2 mb-3">Yanıcı gaz ortamı için kritik.</p>
                         <ul class="text-xs space-y-2 text-slate-600">
-                            [cite_start]<li class="flex gap-2"><i class="ri-plug-line text-slate-500"></i> <strong>5V 2A Harici Adaptör:</strong> Sensör ısıtıcısı yüksek akım çeker[cite: 141].</li>
-                            [cite_start]<li class="flex gap-2"><i class="ri-toggle-line text-slate-500"></i> <strong>SSR (Solid State Relay):</strong> Mekanik röle kıvılcım çıkarır, SSR güvenlidir[cite: 149].</li>
+                            <li class="flex gap-2"><i class="ri-plug-line text-slate-500"></i> <strong>5V 2A Harici Adaptör:</strong> Sensör ısıtıcısı yüksek akım çeker.</li>
+                            <li class="flex gap-2"><i class="ri-toggle-line text-slate-500"></i> <strong>SSR (Solid State Relay):</strong> Mekanik röle kıvılcım çıkarır, SSR güvenlidir.</li>
                         </ul>
                     </div>
                 </div>
@@ -293,14 +283,14 @@
                 <div class="absolute -right-10 -top-10 w-40 h-40 bg-indigo-500 rounded-full blur-3xl opacity-30"></div>
                 <div class="flex flex-col md:flex-row gap-8 items-center relative z-10">
                     <div class="flex-1">
-                        [cite_start]<h3 class="font-bold text-white text-lg mb-2"><i class="ri-tools-line"></i> Kritik Teknik Detay: 5V - 3.3V Uyumu [cite: 121]</h3>
+                        <h3 class="font-bold text-white text-lg mb-2"><i class="ri-tools-line"></i> Kritik Teknik Detay: 5V - 3.3V Uyumu</h3>
                         <p class="text-sm text-indigo-200 mb-4">
-                            Sensörler 5V çıkış verir ancak ESP32 girişi maks. 3.3V destekler. Doğrudan bağlantı ESP32'yi yakar. [cite_start]Analog sinyal için <strong>Gerilim Bölücü (Voltage Divider)</strong> devresi şarttır[cite: 128].
+                            Sensörler 5V çıkış verir ancak ESP32 girişi maks. 3.3V destekler. Doğrudan bağlantı ESP32'yi yakar. Analog sinyal için <strong>Gerilim Bölücü (Voltage Divider)</strong> devresi şarttır.
                         </p>
                         <div class="inline-block bg-black/30 p-3 rounded-lg font-mono text-sm border border-indigo-500/30">
-                            [cite_start]V_esp = V_sensor * (R2 / (R1 + R2)) [cite: 129]
+                            V_esp = V_sensor * (R2 / (R1 + R2))
                         </div>
-                        [cite_start]<p class="text-xs mt-2 opacity-70">Önerilen: R1 = 2.2kΩ, R2 = 3.3kΩ (Çıkış ~3.0V) [cite: 130]</p>
+                        <p class="text-xs mt-2 opacity-70">Önerilen: R1 = 2.2kΩ, R2 = 3.3kΩ (Çıkış ~3.0V)</p>
                     </div>
                     <div class="w-full md:w-1/3 bg-white/10 p-4 rounded-xl border border-white/10">
                         <h4 class="text-xs font-bold uppercase tracking-wider mb-3 text-indigo-300">Bağlantı Şeması</h4>
@@ -325,28 +315,28 @@
                             <div class="w-8 h-8 rounded-full bg-violet-100 flex items-center justify-center text-violet-600 mt-1 flex-shrink-0"><i class="ri-functions-line"></i></div>
                             <div>
                                 <h4 class="font-bold text-sm text-slate-700">Oversampling (Aşırı Örnekleme)</h4>
-                                <p class="text-xs text-slate-500">Analog sinyal gürültülüdür. [cite_start]100ms içinde 50 okuma yapıp ortalamasını alarak stabil veri elde edilir[cite: 160].</p>
+                                <p class="text-xs text-slate-500">Analog sinyal gürültülüdür. 100ms içinde 50 okuma yapıp ortalamasını alarak stabil veri elde edilir.</p>
                             </div>
                         </li>
                         <li class="flex items-start gap-3">
                             <div class="w-8 h-8 rounded-full bg-sky-100 flex items-center justify-center text-sky-600 mt-1 flex-shrink-0"><i class="ri-cloud-line"></i></div>
                             <div>
                                 <h4 class="font-bold text-sm text-slate-700">MQTT & JSON</h4>
-                                <p class="text-xs text-slate-500">Mobil uygulama ile haberleşme için hafif ve hızlı MQTT protokolü kullanılır. [cite_start]Veriler JSON formatında paketlenir[cite: 181].</p>
+                                <p class="text-xs text-slate-500">Mobil uygulama ile haberleşme için hafif ve hızlı MQTT protokolü kullanılır. Veriler JSON formatında paketlenir.</p>
                             </div>
                         </li>
                         <li class="flex items-start gap-3">
                             <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 mt-1 flex-shrink-0"><i class="ri-smartphone-line"></i></div>
                             <div>
                                 <h4 class="font-bold text-sm text-slate-700">Flutter Mobil App</h4>
-                                [cite_start]<p class="text-xs text-slate-500">Çapraz platform (iOS/Android) kontrol paneli[cite: 196]. [cite_start]FCM (Firebase) ile acil durum bildirimleri[cite: 202].</p>
+                                <p class="text-xs text-slate-500">Çapraz platform (iOS/Android) kontrol paneli. FCM (Firebase) ile acil durum bildirimleri.</p>
                             </div>
                         </li>
                     </ul>
                 </div>
 
                 <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 relative">
-                    [cite_start]<h3 class="font-bold text-slate-800 text-lg mb-6">12 Haftalık Yol Haritası [cite: 205]</h3>
+                    <h3 class="font-bold text-slate-800 text-lg mb-6">12 Haftalık Yol Haritası</h3>
                     <div class="absolute left-9 top-20 bottom-10 w-0.5 bg-slate-200"></div>
                     
                     <div class="space-y-8 relative">
@@ -355,7 +345,7 @@
                             <div>
                                 <span class="text-[10px] font-bold text-sky-500 bg-sky-50 px-2 py-1 rounded">1-2. Hafta</span>
                                 <h4 class="text-sm font-bold text-slate-800 mt-1">Araştırma & Tedarik</h4>
-                                <p class="text-xs text-slate-500 mt-1">TGS2630 ve ESP32 siparişi. [cite_start]MSDS güvenlik formlarının incelenmesi[cite: 208].</p>
+                                <p class="text-xs text-slate-500 mt-1">TGS2630 ve ESP32 siparişi. MSDS güvenlik formlarının incelenmesi.</p>
                             </div>
                         </div>
 
@@ -364,7 +354,7 @@
                             <div>
                                 <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded">3-5. Hafta</span>
                                 <h4 class="text-sm font-bold text-slate-800 mt-1">Prototipleme</h4>
-                                <p class="text-xs text-slate-500 mt-1">Breadboard kurulumu. [cite_start]Çakmak gazı (Bütan) ile sensör tepki testi[cite: 212].</p>
+                                <p class="text-xs text-slate-500 mt-1">Breadboard kurulumu. Çakmak gazı (Bütan) ile sensör tepki testi.</p>
                             </div>
                         </div>
 
@@ -373,7 +363,7 @@
                             <div>
                                 <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded">6-9. Hafta</span>
                                 <h4 class="text-sm font-bold text-slate-800 mt-1">IoT & Yazılım</h4>
-                                <p class="text-xs text-slate-500 mt-1">MQTT broker kurulumu. [cite_start]Flutter arayüz tasarımı ve bildirim entegrasyonu[cite: 218].</p>
+                                <p class="text-xs text-slate-500 mt-1">MQTT broker kurulumu. Flutter arayüz tasarımı ve bildirim entegrasyonu.</p>
                             </div>
                         </div>
 
@@ -382,7 +372,7 @@
                             <div>
                                 <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded">10-12. Hafta</span>
                                 <h4 class="text-sm font-bold text-slate-800 mt-1">Saha Testi & Kutu</h4>
-                                <p class="text-xs text-slate-500 mt-1">Hava akışlı kutu tasarımı (3D baskı). [cite_start]Gerçek ortamda pilot deneme[cite: 220].</p>
+                                <p class="text-xs text-slate-500 mt-1">Hava akışlı kutu tasarımı (3D baskı). Gerçek ortamda pilot deneme.</p>
                             </div>
                         </div>
                     </div>
