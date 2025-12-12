@@ -13,31 +13,32 @@
 
     <style>
         :root {
-            --primary: #0ea5e9; /* Sky 500 */
-            --secondary: #6366f1; /* Indigo 500 */
-            --dark: #0f172a; /* Slate 900 */
+            --primary: #0ea5e9;
+            --secondary: #6366f1;
+            --dark: #0f172a;
         }
         body { 
             font-family: 'Inter', sans-serif; 
             background-color: #f8fafc; 
             color: #334155; 
-            -webkit-tap-highlight-color: transparent;
+            /* Mobilde kaydırmayı yumuşat */
+            -webkit-overflow-scrolling: touch; 
         }
         h1, h2, h3, h4, h5 { font-family: 'Plus Jakarta Sans', sans-serif; }
 
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        /* Scrollbar Gizleme/Özelleştirme */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-
+        
         .fade-in { animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         .glass {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
         }
 
         .nav-item.active {
@@ -50,33 +51,36 @@
         .bubble-user { background: linear-gradient(135deg, #0ea5e9, #2563eb); color: white; border-radius: 16px 16px 0 16px; }
         .bubble-ai { background: white; border: 1px solid #e2e8f0; color: #1e293b; border-radius: 16px 16px 16px 0; }
         
-        pre { background: #1e293b !important; color: #e2e8f0; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; }
+        pre { background: #1e293b !important; color: #e2e8f0; padding: 0.75rem; border-radius: 0.5rem; overflow-x: auto; font-size: 0.8rem; }
         
         .typing-dot { animation: typing 1.4s infinite ease-in-out both; }
         .typing-dot:nth-child(1) { animation-delay: -0.32s; }
         .typing-dot:nth-child(2) { animation-delay: -0.16s; }
         @keyframes typing { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
+
+        /* Mobil güvenli alan (iPhone home bar için) */
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
     </style>
 </head>
-<body class="flex flex-col min-h-screen pb-20 md:pb-0">
+<body class="flex flex-col min-h-screen pb-24 md:pb-0">
 
     <header class="fixed top-0 w-full z-50 glass shadow-sm transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-sky-200">
-                    <i class="ri-sensor-line text-xl"></i>
+                <div class="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-gradient-to-br from-sky-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-sky-200 shrink-0">
+                    <i class="ri-sensor-line text-lg md:text-xl"></i>
                 </div>
-                <div>
-                    <h1 class="text-lg font-bold text-slate-800 leading-none">DİREN</h1>
-                    <p class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold mt-0.5">Gaz Tespit Ar-Ge</p>
+                <div class="leading-tight">
+                    <h1 class="text-base md:text-lg font-bold text-slate-800">DİREN</h1>
+                    <p class="text-[9px] md:text-[10px] uppercase tracking-wider text-slate-500 font-bold">Gaz Tespit Ar-Ge</p>
                 </div>
             </div>
 
             <nav class="hidden md:flex items-center space-x-1 bg-slate-100/50 p-1 rounded-xl">
-                <button onclick="app.nav('overview')" id="d-overview" class="nav-item px-4 py-2 rounded-lg text-sm font-medium text-slate-500 transition-all">Genel Bakış</button>
-                <button onclick="app.nav('analysis')" id="d-analysis" class="nav-item px-4 py-2 rounded-lg text-sm font-medium text-slate-500 transition-all">Gaz & Sensör</button>
-                <button onclick="app.nav('hardware')" id="d-hardware" class="nav-item px-4 py-2 rounded-lg text-sm font-medium text-slate-500 transition-all">Donanım</button>
-                <button onclick="app.nav('software')" id="d-software" class="nav-item px-4 py-2 rounded-lg text-sm font-medium text-slate-500 transition-all">Yazılım & Plan</button>
+                <button onclick="app.nav('overview')" id="d-overview" class="nav-item px-4 py-2 rounded-lg text-sm font-medium text-slate-500 transition-all hover:bg-white">Genel Bakış</button>
+                <button onclick="app.nav('analysis')" id="d-analysis" class="nav-item px-4 py-2 rounded-lg text-sm font-medium text-slate-500 transition-all hover:bg-white">Gaz & Sensör</button>
+                <button onclick="app.nav('hardware')" id="d-hardware" class="nav-item px-4 py-2 rounded-lg text-sm font-medium text-slate-500 transition-all hover:bg-white">Donanım</button>
+                <button onclick="app.nav('software')" id="d-software" class="nav-item px-4 py-2 rounded-lg text-sm font-medium text-slate-500 transition-all hover:bg-white">Yazılım & Plan</button>
                 <button onclick="app.nav('ai')" id="d-ai" class="ml-2 px-4 py-2 rounded-lg text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 shadow-md shadow-indigo-200 transition-all flex items-center gap-2">
                     <i class="ri-sparkling-fill"></i> Asistan
                 </button>
@@ -84,58 +88,58 @@
         </div>
     </header>
 
-    <main class="flex-grow max-w-7xl mx-auto w-full px-4 pt-24 pb-10 space-y-8">
+    <main class="flex-grow max-w-7xl mx-auto w-full px-4 md:px-6 pt-20 md:pt-24 pb-6 space-y-6">
 
-        <section id="s-overview" class="fade-in space-y-6">
-            <div class="bg-slate-900 rounded-3xl p-8 md:p-12 text-white relative overflow-hidden shadow-2xl shadow-slate-200">
-                <div class="absolute top-0 right-0 w-96 h-96 bg-sky-500 rounded-full mix-blend-overlay filter blur-3xl opacity-20 -mr-20 -mt-20"></div>
-                <div class="absolute bottom-0 left-0 w-72 h-72 bg-indigo-500 rounded-full mix-blend-overlay filter blur-3xl opacity-20 -ml-20 -mb-20"></div>
+        <section id="s-overview" class="fade-in space-y-5">
+            <div class="bg-slate-900 rounded-2xl md:rounded-3xl p-6 md:p-12 text-white relative overflow-hidden shadow-xl shadow-slate-200">
+                <div class="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-sky-500 rounded-full mix-blend-overlay filter blur-3xl opacity-20 -mr-16 -mt-16 pointer-events-none"></div>
+                <div class="absolute bottom-0 left-0 w-48 h-48 md:w-72 md:h-72 bg-indigo-500 rounded-full mix-blend-overlay filter blur-3xl opacity-20 -ml-12 -mb-12 pointer-events-none"></div>
                 
                 <div class="relative z-10 max-w-3xl">
-                    <span class="inline-flex items-center gap-1.5 py-1 px-3 rounded-full bg-sky-500/20 border border-sky-500/30 text-sky-300 text-xs font-bold mb-6 backdrop-blur-sm">
+                    <span class="inline-flex items-center gap-1.5 py-1 px-2.5 rounded-full bg-sky-500/20 border border-sky-500/30 text-sky-300 text-[10px] md:text-xs font-bold mb-4 backdrop-blur-sm">
                         <i class="ri-file-list-3-line"></i> TEKNİK RAPOR ÖZETİ
                     </span>
-                    <h2 class="text-3xl md:text-5xl font-bold mb-6 leading-tight">Yeni Nesil Klima Gazı <br><span class="text-sky-400">Kaçak Tespit Sistemi</span></h2>
-                    <p class="text-slate-300 text-lg leading-relaxed mb-8">
-                        Üniversite kampüsleri ve kritik altyapılar için, özellikle <strong>R-32 ve R-410A</strong> gibi yeni nesil soğutucu akışkanları tespit eden, yanlış alarmlardan arındırılmış, IoT tabanlı güvenlik sistemi geliştirme projesidir.
+                    <h2 class="text-2xl md:text-5xl font-bold mb-4 md:mb-6 leading-tight">Yeni Nesil Klima Gazı <br><span class="text-sky-400">Kaçak Tespit Sistemi</span></h2>
+                    <p class="text-slate-300 text-sm md:text-lg leading-relaxed mb-6 md:mb-8">
+                        Üniversite kampüsleri ve kritik altyapılar için, özellikle <strong>R-32 ve R-410A</strong> gibi yeni nesil soğutucu akışkanları tespit eden, yanlış alarmlardan arındırılmış güvenlik sistemi.
                     </p>
                     
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center md:text-left">
-                        <div>
-                            <div class="text-3xl font-bold text-sky-400">A2L</div>
-                            <div class="text-xs text-slate-400 uppercase tracking-wide mt-1">Hedef Gaz Sınıfı</div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 text-center md:text-left">
+                        <div class="bg-white/5 p-3 rounded-lg md:bg-transparent md:p-0">
+                            <div class="text-2xl md:text-3xl font-bold text-sky-400">A2L</div>
+                            <div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide mt-1">Hedef Gaz</div>
                         </div>
-                        <div>
-                            <div class="text-3xl font-bold text-sky-400">%14.4</div>
-                            <div class="text-xs text-slate-400 uppercase tracking-wide mt-1">R-32 LFL Limiti</div>
+                        <div class="bg-white/5 p-3 rounded-lg md:bg-transparent md:p-0">
+                            <div class="text-2xl md:text-3xl font-bold text-sky-400">%14.4</div>
+                            <div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide mt-1">R-32 LFL Limiti</div>
                         </div>
-                        <div>
-                            <div class="text-3xl font-bold text-sky-400">IoT</div>
-                            <div class="text-xs text-slate-400 uppercase tracking-wide mt-1">MQTT & Flutter</div>
+                        <div class="bg-white/5 p-3 rounded-lg md:bg-transparent md:p-0">
+                            <div class="text-2xl md:text-3xl font-bold text-sky-400">IoT</div>
+                            <div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide mt-1">MQTT & Flutter</div>
                         </div>
-                        <div>
-                            <div class="text-3xl font-bold text-sky-400">12</div>
-                            <div class="text-xs text-slate-400 uppercase tracking-wide mt-1">Haftalık Plan</div>
+                        <div class="bg-white/5 p-3 rounded-lg md:bg-transparent md:p-0">
+                            <div class="text-2xl md:text-3xl font-bold text-sky-400">12</div>
+                            <div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide mt-1">Haftalık Plan</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 class="font-bold text-slate-800 text-lg mb-3 flex items-center gap-2">
-                        <i class="ri-alert-fill text-orange-500"></i> Problem: Yanıcılık
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                <div class="bg-white p-5 md:p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="font-bold text-slate-800 text-base md:text-lg mb-2 flex items-center gap-2">
+                        <div class="p-1.5 bg-orange-100 rounded text-orange-600"><i class="ri-alert-fill"></i></div> Problem
                     </h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        Çevresel regülasyonlar (Kigali Değişikliği) nedeniyle R-410A yerini <strong>R-32</strong>'ye bırakıyor. R-32 "Düşük Yanıcı" (A2L) sınıfındadır. Kapalı alanlarda sızıntı, patlayıcı konsantrasyona ulaşabilir. Mevcut sistemler eski gazlara göre tasarlanmıştır.
+                    <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                        Çevresel regülasyonlar nedeniyle R-410A yerini <strong>R-32</strong>'ye bırakıyor. R-32 "Düşük Yanıcı" (A2L) sınıfındadır. Kapalı alanlarda sızıntı risklidir.
                     </p>
                 </div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 class="font-bold text-slate-800 text-lg mb-3 flex items-center gap-2">
-                        <i class="ri-checkbox-circle-fill text-green-500"></i> Çözüm: Seçici Sensör
+                <div class="bg-white p-5 md:p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="font-bold text-slate-800 text-base md:text-lg mb-2 flex items-center gap-2">
+                        <div class="p-1.5 bg-green-100 rounded text-green-600"><i class="ri-checkbox-circle-fill"></i></div> Çözüm
                     </h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        Sıradan hava kalitesi sensörleri (MQ-135) temizlik malzemelerine (alkol) bile alarm verir. Proje, <strong>soğutucu gazlara özel filtrelenmiş</strong> endüstriyel sensörler (TGS2630/ZRT510) ve güvenli donanım mimarisi kullanır.
+                    <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                        MQ-135 gibi hobi sensörleri alkole alarm verir. Proje, <strong>filtreli endüstriyel sensörler</strong> (TGS2630) ve güvenli donanım kullanır.
                     </p>
                 </div>
             </div>
@@ -145,77 +149,77 @@
             <div class="flex flex-col md:flex-row gap-6">
                 
                 <div class="w-full md:w-1/3 space-y-4">
-                    <div class="bg-blue-600 rounded-2xl p-6 text-white shadow-lg shadow-blue-200">
+                    <div class="bg-blue-600 rounded-2xl p-5 md:p-6 text-white shadow-lg shadow-blue-200">
                         <div class="flex items-center gap-3 mb-4">
                             <i class="ri-download-2-line text-2xl bg-white/20 p-2 rounded-lg"></i>
                             <div>
-                                <h3 class="font-bold">Kritik Fizik Kuralı</h3>
-                                <p class="text-xs text-blue-100">R-32 Yoğunluğu > Hava</p>
+                                <h3 class="font-bold text-sm md:text-base">Fizik Kuralı</h3>
+                                <p class="text-[10px] md:text-xs text-blue-100">R-32 Yoğunluğu > Hava</p>
                             </div>
                         </div>
-                        <p class="text-sm text-blue-50 leading-relaxed mb-4">
-                            Soğutucu gazlar havadan ağırdır (Bağıl yoğunluk ~1.8). Kaçak anında gaz <strong>zemine çöker</strong>. 
+                        <p class="text-xs md:text-sm text-blue-50 leading-relaxed mb-4">
+                            Soğutucu gazlar havadan ağırdır. Kaçak anında gaz <strong>zemine çöker</strong>. Tavandaki sensör işe yaramaz.
                         </p>
                         <div class="bg-white/10 rounded-lg p-3 border border-white/20">
-                            <p class="text-xs font-semibold text-center">
+                            <p class="text-xs font-semibold text-center flex items-center justify-center gap-2">
                                 <i class="ri-map-pin-line"></i> Montaj: Zeminden 30-50 cm
                             </p>
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm">
-                        <h4 class="font-bold text-slate-700 mb-3">Hedef Gazlar</h4>
+                    <div class="bg-white rounded-2xl p-4 md:p-5 border border-slate-100 shadow-sm">
+                        <h4 class="font-bold text-slate-700 mb-3 text-sm">Hedef Gazlar</h4>
                         <div class="space-y-3">
                             <div class="flex justify-between items-center p-3 bg-slate-50 rounded-lg">
-                                <span class="text-sm font-medium">R-410A</span>
-                                <span class="text-xs bg-slate-200 px-2 py-1 rounded">Yaygın</span>
+                                <span class="text-xs md:text-sm font-medium">R-410A</span>
+                                <span class="text-[10px] bg-slate-200 px-2 py-1 rounded text-slate-600">Yaygın</span>
                             </div>
                             <div class="flex justify-between items-center p-3 bg-orange-50 rounded-lg border border-orange-100">
-                                <span class="text-sm font-bold text-orange-800">R-32</span>
-                                <span class="text-xs bg-orange-200 text-orange-800 px-2 py-1 rounded font-bold">Yanıcı (A2L)</span>
+                                <span class="text-xs md:text-sm font-bold text-orange-800">R-32</span>
+                                <span class="text-[10px] bg-orange-200 text-orange-800 px-2 py-1 rounded font-bold">Yanıcı (A2L)</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="w-full md:w-2/3 bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="font-bold text-lg text-slate-800">Sensör Teknolojileri Analizi</h3>
-                        <span class="text-xs text-slate-400">Rapor Bölüm 3.4</span>
+                <div class="w-full md:w-2/3 bg-white rounded-2xl p-5 md:p-6 shadow-sm border border-slate-100">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-base md:text-lg text-slate-800">Sensör Analizi</h3>
+                        <span class="text-[10px] text-slate-400 bg-slate-50 px-2 py-1 rounded">Rapor Bölüm 3.4</span>
                     </div>
 
-                    <div class="h-64 w-full mb-6">
+                    <div class="relative h-56 md:h-64 w-full mb-6">
                         <canvas id="sensorChart"></canvas>
                     </div>
 
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-sm text-left">
+                    <div class="overflow-x-auto -mx-5 md:mx-0 px-5 md:px-0">
+                        <table class="w-full text-xs md:text-sm text-left whitespace-nowrap md:whitespace-normal">
                             <thead class="bg-slate-50 text-slate-500 font-medium">
                                 <tr>
                                     <th class="p-3 rounded-l-lg">Model</th>
                                     <th class="p-3">Teknoloji</th>
-                                    <th class="p-3">Yanlış Alarm (Alkol)</th>
+                                    <th class="p-3">Hata Oranı</th>
                                     <th class="p-3 rounded-r-lg">Karar</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-100">
                                 <tr class="opacity-50">
-                                    <td class="p-3 font-mono text-red-500">MQ-135 / MQ-2</td>
-                                    <td class="p-3">Hobi Sınıfı MOS</td>
+                                    <td class="p-3 font-mono text-red-500 font-bold">MQ-135</td>
+                                    <td class="p-3">Hobi MOS</td>
                                     <td class="p-3 text-red-500">Çok Yüksek</td>
-                                    <td class="p-3"><span class="px-2 py-1 bg-red-100 text-red-700 rounded text-xs font-bold">REDDEDİLDİ</span></td>
+                                    <td class="p-3"><span class="px-2 py-1 bg-red-100 text-red-700 rounded text-[10px] font-bold">RED</span></td>
                                 </tr>
                                 <tr class="bg-sky-50/50">
-                                    <td class="p-3 font-mono font-bold text-sky-700">Figaro TGS2630</td>
+                                    <td class="p-3 font-mono font-bold text-sky-700">TGS 2630</td>
                                     <td class="p-3">Filtreli MOS</td>
-                                    <td class="p-3 text-green-600">Düşük (Karbon Filtreli)</td>
-                                    <td class="p-3"><span class="px-2 py-1 bg-sky-100 text-sky-700 rounded text-xs font-bold">ÖNERİLEN</span></td>
+                                    <td class="p-3 text-green-600">Düşük (Filtreli)</td>
+                                    <td class="p-3"><span class="px-2 py-1 bg-sky-100 text-sky-700 rounded text-[10px] font-bold">ONAY</span></td>
                                 </tr>
                                 <tr>
-                                    <td class="p-3 font-mono text-slate-700">Winsen ZRT510</td>
-                                    <td class="p-3">NDIR (Kızılötesi)</td>
+                                    <td class="p-3 font-mono text-slate-700">ZRT 510</td>
+                                    <td class="p-3">NDIR (IR)</td>
                                     <td class="p-3 text-green-600">Yok (Mükemmel)</td>
-                                    <td class="p-3"><span class="px-2 py-1 bg-slate-100 text-slate-600 rounded text-xs">Pahalı Alternatif</span></td>
+                                    <td class="p-3"><span class="px-2 py-1 bg-slate-100 text-slate-600 rounded text-[10px]">PAHALI</span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -224,155 +228,147 @@
             </div>
         </section>
 
-        <section id="s-hardware" class="hidden fade-in space-y-6">
-            
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
-                <h3 class="font-bold text-slate-800 text-lg mb-6">Sistem Bağlantı Mimarisi (BOM)</h3>
+        <section id="s-hardware" class="hidden fade-in space-y-5">
+            <div class="bg-white rounded-2xl p-5 md:p-6 shadow-sm border border-slate-100">
+                <h3 class="font-bold text-slate-800 text-base md:text-lg mb-4">Sistem Bileşenleri (BOM)</h3>
                 
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="group p-4 rounded-xl border border-slate-200 hover:border-sky-400 transition-all bg-slate-50 hover:bg-white hover:shadow-lg">
-                        <div class="w-12 h-12 bg-sky-100 rounded-lg flex items-center justify-center text-sky-600 mb-4 group-hover:scale-110 transition-transform">
-                            <i class="ri-cpu-line text-2xl"></i>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="group p-4 rounded-xl border border-slate-200 bg-slate-50 transition-all hover:bg-white hover:shadow-md">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 bg-sky-100 rounded-lg flex items-center justify-center text-sky-600">
+                                <i class="ri-cpu-line text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-700 text-sm">ESP32</h4>
                         </div>
-                        <h4 class="font-bold text-slate-700">ESP32 Geliştirme Kartı</h4>
-                        <p class="text-xs text-slate-500 mt-2 mb-3">Arduino yerine tercih edilmelidir.</p>
-                        <ul class="text-xs space-y-2 text-slate-600">
-                            <li class="flex gap-2"><i class="ri-wifi-line text-sky-500"></i> Dahili Wi-Fi & Bluetooth (IoT)</li>
-                            <li class="flex gap-2"><i class="ri-speed-line text-sky-500"></i> Çift Çekirdekli Güçlü İşlemci</li>
-                            <li class="flex gap-2"><i class="ri-alert-line text-red-500"></i> 3.3V Lojik Seviye</li>
-                        </ul>
+                        <p class="text-xs text-slate-500 mb-2">Arduino yerine tercih edilmelidir.</p>
+                        <div class="flex flex-wrap gap-1">
+                            <span class="text-[10px] bg-white border border-slate-200 px-1.5 py-0.5 rounded text-slate-600">Wi-Fi</span>
+                            <span class="text-[10px] bg-white border border-slate-200 px-1.5 py-0.5 rounded text-slate-600">3.3V Logic</span>
+                        </div>
                     </div>
 
-                    <div class="group p-4 rounded-xl border border-slate-200 hover:border-sky-400 transition-all bg-slate-50 hover:bg-white hover:shadow-lg relative">
-                        <span class="absolute top-3 right-3 flex h-3 w-3">
-                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                          <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                        </span>
-
-                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center text-green-600 mb-4 group-hover:scale-110 transition-transform">
-                            <i class="ri-sensor-fill text-2xl"></i>
+                    <div class="group p-4 rounded-xl border-2 border-green-100 bg-green-50/30 relative">
+                        <div class="absolute top-3 right-3 w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600">
+                                <i class="ri-sensor-fill text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-700 text-sm">Figaro TGS</h4>
                         </div>
-                        <h4 class="font-bold text-slate-700">Figaro TGS Sensör</h4>
-                        <p class="text-xs text-slate-500 mt-2 mb-3">Figaro TGS serisi önerilmektedir.</p>
-                        <ul class="text-xs space-y-2 text-slate-600 mb-4">
-                            <li class="flex gap-2"><i class="ri-filter-3-line text-green-500"></i> Aktif Karbon Filtreli</li>
-                            <li class="flex gap-2"><i class="ri-flashlight-line text-orange-500"></i> 5V Çalışma Gerilimi</li>
-                        </ul>
+                        <p class="text-xs text-slate-500 mb-3">R-32 için filtreli sensör.</p>
                         
-                        <a href="https://www.ozdisan.com/p/gaz-sensorleri-915/figaro-tgs2600-433747?srsltid=AfmBOopCwS-_tUTd4Q2mtEGaD2QPb7GTyHJdHO-sErfnjeYIxzp-9r9m" target="_blank" class="block w-full py-2.5 bg-green-600 hover:bg-green-700 active:bg-green-800 text-white text-xs font-bold text-center rounded-lg transition-colors flex items-center justify-center gap-2 shadow-sm shadow-green-200">
-                            <i class="ri-shopping-cart-2-line text-base"></i> Özdisan'dan Satın Al
-                            <span class="text-[10px] font-normal opacity-80">(TGS2600)</span>
+                        <a href="https://www.ozdisan.com/p/gaz-sensorleri-915/figaro-tgs2600-433747?srsltid=AfmBOopCwS-_tUTd4Q2mtEGaD2QPb7GTyHJdHO-sErfnjeYIxzp-9r9m" target="_blank" class="block w-full py-2 bg-green-600 active:bg-green-700 text-white text-xs font-bold text-center rounded-lg shadow-sm shadow-green-200 transition-transform active:scale-95">
+                            <i class="ri-shopping-cart-2-line"></i> Özdisan'dan Al
                         </a>
                     </div>
 
-                    <div class="group p-4 rounded-xl border border-slate-200 hover:border-sky-400 transition-all bg-slate-50 hover:bg-white hover:shadow-lg">
-                        <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 mb-4 group-hover:scale-110 transition-transform">
-                            <i class="ri-shield-flash-line text-2xl"></i>
+                    <div class="group p-4 rounded-xl border border-slate-200 bg-slate-50 transition-all hover:bg-white hover:shadow-md">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600">
+                                <i class="ri-plug-line text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-700 text-sm">Güç & SSR</h4>
                         </div>
-                        <h4 class="font-bold text-slate-700">Güvenlik & Güç Katı</h4>
-                        <p class="text-xs text-slate-500 mt-2 mb-3">Yanıcı gaz ortamı için kritik.</p>
-                        <ul class="text-xs space-y-2 text-slate-600">
-                            <li class="flex gap-2"><i class="ri-plug-line text-slate-500"></i> <strong>5V 2A Harici Adaptör:</strong> Sensör ısıtıcısı yüksek akım çeker.</li>
-                            <li class="flex gap-2"><i class="ri-toggle-line text-slate-500"></i> <strong>SSR (Solid State Relay):</strong> Mekanik röle kıvılcım çıkarır, SSR güvenlidir.</li>
-                        </ul>
+                        <p class="text-xs text-slate-500 mb-2">Güvenlik kritik öneme sahiptir.</p>
+                        <div class="flex flex-wrap gap-1">
+                            <span class="text-[10px] bg-white border border-slate-200 px-1.5 py-0.5 rounded text-slate-600">5V 2A</span>
+                            <span class="text-[10px] bg-white border border-slate-200 px-1.5 py-0.5 rounded text-slate-600">SSR Röle</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-indigo-900 rounded-2xl p-6 text-indigo-100 relative overflow-hidden">
-                <div class="absolute -right-10 -top-10 w-40 h-40 bg-indigo-500 rounded-full blur-3xl opacity-30"></div>
-                <div class="flex flex-col md:flex-row gap-8 items-center relative z-10">
+            <div class="bg-indigo-900 rounded-2xl p-5 md:p-6 text-indigo-100 relative overflow-hidden">
+                <div class="flex flex-col md:flex-row gap-6 items-start md:items-center relative z-10">
                     <div class="flex-1">
-                        <h3 class="font-bold text-white text-lg mb-2"><i class="ri-tools-line"></i> Kritik Teknik Detay: 5V - 3.3V Uyumu</h3>
-                        <p class="text-sm text-indigo-200 mb-4">
-                            Sensörler 5V çıkış verir ancak ESP32 girişi maks. 3.3V destekler. Doğrudan bağlantı ESP32'yi yakar. Analog sinyal için <strong>Gerilim Bölücü (Voltage Divider)</strong> devresi şarttır.
+                        <h3 class="font-bold text-white text-base md:text-lg mb-2 flex items-center gap-2">
+                            <i class="ri-tools-line"></i> 5V - 3.3V Uyumu
+                        </h3>
+                        <p class="text-xs md:text-sm text-indigo-200 mb-3">
+                            Sensör 5V verir, ESP32 3.3V alır. Doğrudan bağlama! <strong>Gerilim Bölücü</strong> kullan.
                         </p>
-                        <div class="inline-block bg-black/30 p-3 rounded-lg font-mono text-sm border border-indigo-500/30">
+                        <div class="inline-block bg-black/30 p-2.5 rounded-lg font-mono text-xs border border-indigo-500/30">
                             V_esp = V_sensor * (R2 / (R1 + R2))
                         </div>
-                        <p class="text-xs mt-2 opacity-70">Önerilen: R1 = 2.2kΩ, R2 = 3.3kΩ (Çıkış ~3.0V)</p>
+                        <p class="text-[10px] mt-2 opacity-70">R1 = 2.2kΩ, R2 = 3.3kΩ</p>
                     </div>
-                    <div class="w-full md:w-1/3 bg-white/10 p-4 rounded-xl border border-white/10">
-                        <h4 class="text-xs font-bold uppercase tracking-wider mb-3 text-indigo-300">Bağlantı Şeması</h4>
-                        <div class="space-y-2 text-xs font-mono">
-                            <div class="flex justify-between"><span>Sensör VCC</span> <span>-></span> <span class="text-red-300">5V (Harici)</span></div>
-                            <div class="flex justify-between"><span>Sensör GND</span> <span>-></span> <span>Ortak GND</span></div>
-                            <div class="flex justify-between"><span>Sensör OUT</span> <span>-></span> <span class="text-yellow-300">R1 -> R2</span></div>
-                            <div class="flex justify-between"><span>R1/R2 Ortası</span> <span>-></span> <span class="text-green-300">ESP32 GPIO</span></div>
+                    <div class="w-full md:w-auto bg-white/10 p-3 rounded-xl border border-white/10 min-w-[200px]">
+                        <h4 class="text-[10px] font-bold uppercase tracking-wider mb-2 text-indigo-300">Bağlantı</h4>
+                        <div class="space-y-1.5 text-[10px] md:text-xs font-mono">
+                            <div class="flex justify-between"><span>VCC</span> <span class="text-indigo-400">-></span> <span class="text-red-300">5V</span></div>
+                            <div class="flex justify-between"><span>GND</span> <span class="text-indigo-400">-></span> <span>GND</span></div>
+                            <div class="flex justify-between"><span>OUT</span> <span class="text-indigo-400">-></span> <span class="text-yellow-300">R1/R2</span></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="s-software" class="hidden fade-in space-y-8">
+        <section id="s-software" class="hidden fade-in space-y-6">
             
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
-                    <h3 class="font-bold text-slate-800 text-lg mb-4">Yazılım Stratejisi</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-2xl p-5 md:p-6 shadow-sm border border-slate-100">
+                    <h3 class="font-bold text-slate-800 text-base md:text-lg mb-4">Yazılım Stratejisi</h3>
                     <ul class="space-y-4">
                         <li class="flex items-start gap-3">
-                            <div class="w-8 h-8 rounded-full bg-violet-100 flex items-center justify-center text-violet-600 mt-1 flex-shrink-0"><i class="ri-functions-line"></i></div>
+                            <div class="w-8 h-8 rounded-full bg-violet-100 flex items-center justify-center text-violet-600 mt-1 shrink-0"><i class="ri-functions-line"></i></div>
                             <div>
-                                <h4 class="font-bold text-sm text-slate-700">Oversampling (Aşırı Örnekleme)</h4>
-                                <p class="text-xs text-slate-500">Analog sinyal gürültülüdür. 100ms içinde 50 okuma yapıp ortalamasını alarak stabil veri elde edilir.</p>
+                                <h4 class="font-bold text-sm text-slate-700">Oversampling</h4>
+                                <p class="text-xs text-slate-500">100ms'de 50 okuma ortalaması alarak gürültüyü temizle.</p>
                             </div>
                         </li>
                         <li class="flex items-start gap-3">
-                            <div class="w-8 h-8 rounded-full bg-sky-100 flex items-center justify-center text-sky-600 mt-1 flex-shrink-0"><i class="ri-cloud-line"></i></div>
+                            <div class="w-8 h-8 rounded-full bg-sky-100 flex items-center justify-center text-sky-600 mt-1 shrink-0"><i class="ri-cloud-line"></i></div>
                             <div>
                                 <h4 class="font-bold text-sm text-slate-700">MQTT & JSON</h4>
-                                <p class="text-xs text-slate-500">Mobil uygulama ile haberleşme için hafif ve hızlı MQTT protokolü kullanılır. Veriler JSON formatında paketlenir.</p>
+                                <p class="text-xs text-slate-500">Hızlı veri aktarımı için hafif protokol.</p>
                             </div>
                         </li>
                         <li class="flex items-start gap-3">
-                            <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 mt-1 flex-shrink-0"><i class="ri-smartphone-line"></i></div>
+                            <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 mt-1 shrink-0"><i class="ri-smartphone-line"></i></div>
                             <div>
-                                <h4 class="font-bold text-sm text-slate-700">Flutter Mobil App</h4>
-                                <p class="text-xs text-slate-500">Çapraz platform (iOS/Android) kontrol paneli. FCM (Firebase) ile acil durum bildirimleri.</p>
+                                <h4 class="font-bold text-sm text-slate-700">Flutter App</h4>
+                                <p class="text-xs text-slate-500">iOS/Android uyumlu kontrol paneli.</p>
                             </div>
                         </li>
                     </ul>
                 </div>
 
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 relative">
-                    <h3 class="font-bold text-slate-800 text-lg mb-6">12 Haftalık Yol Haritası</h3>
-                    <div class="absolute left-9 top-20 bottom-10 w-0.5 bg-slate-200"></div>
+                <div class="bg-white rounded-2xl p-5 md:p-6 shadow-sm border border-slate-100 relative">
+                    <h3 class="font-bold text-slate-800 text-base md:text-lg mb-6">12 Haftalık Plan</h3>
+                    <div class="absolute left-[31px] md:left-[33px] top-20 bottom-10 w-0.5 bg-slate-200"></div>
                     
-                    <div class="space-y-8 relative">
+                    <div class="space-y-6 relative">
                         <div class="flex gap-4 relative">
-                            <div class="w-6 h-6 rounded-full bg-sky-500 border-4 border-white shadow-sm flex-shrink-0 z-10"></div>
-                            <div>
-                                <span class="text-[10px] font-bold text-sky-500 bg-sky-50 px-2 py-1 rounded">1-2. Hafta</span>
-                                <h4 class="text-sm font-bold text-slate-800 mt-1">Araştırma & Tedarik</h4>
-                                <p class="text-xs text-slate-500 mt-1">TGS2630 ve ESP32 siparişi. MSDS güvenlik formlarının incelenmesi.</p>
+                            <div class="w-6 h-6 rounded-full bg-sky-500 border-4 border-white shadow-sm shrink-0 z-10"></div>
+                            <div class="-mt-1">
+                                <span class="text-[10px] font-bold text-sky-500 bg-sky-50 px-2 py-0.5 rounded">1-2. Hafta</span>
+                                <h4 class="text-sm font-bold text-slate-800 mt-1">Malzeme & Araştırma</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">TGS2630 siparişi, MSDS incelemesi.</p>
                             </div>
                         </div>
-
                         <div class="flex gap-4 relative">
-                            <div class="w-6 h-6 rounded-full bg-white border-4 border-slate-300 shadow-sm flex-shrink-0 z-10"></div>
-                            <div>
-                                <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded">3-5. Hafta</span>
+                            <div class="w-6 h-6 rounded-full bg-white border-4 border-slate-300 shadow-sm shrink-0 z-10"></div>
+                            <div class="-mt-1">
+                                <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">3-5. Hafta</span>
                                 <h4 class="text-sm font-bold text-slate-800 mt-1">Prototipleme</h4>
-                                <p class="text-xs text-slate-500 mt-1">Breadboard kurulumu. Çakmak gazı (Bütan) ile sensör tepki testi.</p>
+                                <p class="text-xs text-slate-500 mt-0.5">Breadboard kurulumu, çakmak gazı testi.</p>
                             </div>
                         </div>
-
                         <div class="flex gap-4 relative">
-                            <div class="w-6 h-6 rounded-full bg-white border-4 border-slate-300 shadow-sm flex-shrink-0 z-10"></div>
-                            <div>
-                                <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded">6-9. Hafta</span>
+                            <div class="w-6 h-6 rounded-full bg-white border-4 border-slate-300 shadow-sm shrink-0 z-10"></div>
+                            <div class="-mt-1">
+                                <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">6-9. Hafta</span>
                                 <h4 class="text-sm font-bold text-slate-800 mt-1">IoT & Yazılım</h4>
-                                <p class="text-xs text-slate-500 mt-1">MQTT broker kurulumu. Flutter arayüz tasarımı ve bildirim entegrasyonu.</p>
+                                <p class="text-xs text-slate-500 mt-0.5">MQTT ve Mobil Uygulama (Flutter).</p>
                             </div>
                         </div>
-
                         <div class="flex gap-4 relative">
-                            <div class="w-6 h-6 rounded-full bg-white border-4 border-slate-300 shadow-sm flex-shrink-0 z-10"></div>
-                            <div>
-                                <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded">10-12. Hafta</span>
-                                <h4 class="text-sm font-bold text-slate-800 mt-1">Saha Testi & Kutu</h4>
-                                <p class="text-xs text-slate-500 mt-1">Hava akışlı kutu tasarımı (3D baskı). Gerçek ortamda pilot deneme.</p>
+                            <div class="w-6 h-6 rounded-full bg-white border-4 border-slate-300 shadow-sm shrink-0 z-10"></div>
+                            <div class="-mt-1">
+                                <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">10-12. Hafta</span>
+                                <h4 class="text-sm font-bold text-slate-800 mt-1">Saha Testi</h4>
+                                <p class="text-xs text-slate-500 mt-0.5">Kutu tasarımı ve gerçek ortam testi.</p>
                             </div>
                         </div>
                     </div>
@@ -380,39 +376,39 @@
             </div>
         </section>
 
-        <section id="s-ai" class="hidden fade-in h-[600px] flex flex-col">
-            <div class="bg-gradient-to-r from-indigo-600 to-violet-600 rounded-t-3xl p-6 text-white shrink-0">
+        <section id="s-ai" class="hidden fade-in h-[75vh] md:h-[600px] flex flex-col">
+            <div class="bg-gradient-to-r from-indigo-600 to-violet-600 rounded-t-2xl md:rounded-t-3xl p-4 md:p-6 text-white shrink-0">
                 <div class="flex items-center gap-3">
                     <div class="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
                         <i class="ri-robot-2-fill text-xl"></i>
                     </div>
                     <div>
-                        <h2 class="font-bold text-lg">Proje Teknik Asistanı</h2>
-                        <p class="text-xs text-indigo-200">Rapor verileriyle eğitilmiş yapay zeka</p>
+                        <h2 class="font-bold text-base md:text-lg">Proje Asistanı</h2>
+                        <p class="text-[10px] md:text-xs text-indigo-200">Teknik rapor verileriyle eğitildi</p>
                     </div>
                 </div>
             </div>
             
-            <div class="flex-grow bg-white border-x border-b border-slate-200 shadow-sm rounded-b-3xl flex flex-col overflow-hidden">
+            <div class="flex-grow bg-white border-x border-b border-slate-200 shadow-sm rounded-b-2xl md:rounded-b-3xl flex flex-col overflow-hidden relative">
                 <div id="chat-container" class="flex-grow overflow-y-auto p-4 space-y-4 bg-slate-50/50">
                     <div class="flex gap-3 fade-in">
                         <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 text-xs shrink-0"><i class="ri-robot-2-line"></i></div>
-                        <div class="bubble-ai p-4 text-sm max-w-[85%] shadow-sm">
-                            <p>Merhaba! 👋 Ben DİREN projesi için teknik asistanım. Rapor içeriğine hakimim.</p>
-                            <p class="mt-2 text-slate-500 text-xs">Şunları sorabilirsin:</p>
-                            <ul class="list-disc list-inside mt-1 text-slate-500 text-xs">
-                                <li>Neden MQ-135 kullanmıyoruz?</li>
-                                <li>Voltaj bölücü direnç değerleri kaç olmalı?</li>
-                                <li>R-32 gazı sensörü nereye monte edilmeli?</li>
+                        <div class="bubble-ai p-3 text-sm max-w-[85%] shadow-sm">
+                            <p>Merhaba! 👋 Ben DİREN teknik asistanıyım.</p>
+                            <p class="mt-2 text-slate-500 text-xs font-medium">Örnek Sorular:</p>
+                            <ul class="list-disc list-inside mt-1 text-slate-500 text-[10px] space-y-1">
+                                <li>MQ-135 neden kullanılmaz?</li>
+                                <li>Sensör bağlantı şeması nedir?</li>
+                                <li>R-32 sensörü nereye takılır?</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <div class="p-4 bg-white border-t border-slate-100">
+                <div class="p-3 md:p-4 bg-white border-t border-slate-100">
                     <div class="flex gap-2 relative">
                         <input type="text" id="user-input" placeholder="Teknik bir soru sorun..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all" onkeypress="if(event.key === 'Enter') app.askAI()">
-                        <button onclick="app.askAI()" id="send-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl px-4 transition-colors">
+                        <button onclick="app.askAI()" id="send-btn" class="bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white rounded-xl px-4 transition-colors flex items-center justify-center">
                             <i class="ri-send-plane-fill"></i>
                         </button>
                     </div>
@@ -422,34 +418,34 @@
 
     </main>
 
-    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 px-2 py-1 flex justify-between items-center z-50 pb-safe shadow-[0_-5px_15px_rgba(0,0,0,0.03)]">
-        <button onclick="app.nav('overview')" id="m-overview" class="nav-item flex flex-col items-center p-2 rounded-lg w-16 transition-colors">
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 px-4 py-2 flex justify-between items-center z-50 pb-safe shadow-[0_-5px_15px_rgba(0,0,0,0.03)] safe-area-pb">
+        <button onclick="app.nav('overview')" id="m-overview" class="nav-item flex flex-col items-center justify-center p-2 rounded-lg w-14 transition-colors">
             <i class="ri-home-4-line text-xl mb-0.5"></i>
             <span class="text-[9px] font-medium">Özet</span>
         </button>
-        <button onclick="app.nav('analysis')" id="m-analysis" class="nav-item flex flex-col items-center p-2 rounded-lg w-16 transition-colors">
+        <button onclick="app.nav('analysis')" id="m-analysis" class="nav-item flex flex-col items-center justify-center p-2 rounded-lg w-14 transition-colors">
             <i class="ri-flask-line text-xl mb-0.5"></i>
             <span class="text-[9px] font-medium">Gaz</span>
         </button>
-        <button onclick="app.nav('ai')" id="m-ai" class="flex flex-col items-center justify-center w-16 -mt-6">
-            <div class="w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center text-white shadow-lg shadow-indigo-300 border-4 border-white">
+        <button onclick="app.nav('ai')" id="m-ai" class="flex flex-col items-center justify-center w-14 -mt-8 relative z-10">
+            <div class="w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center text-white shadow-lg shadow-indigo-300 border-4 border-white active:scale-95 transition-transform">
                 <i class="ri-sparkling-fill text-xl"></i>
             </div>
             <span class="text-[9px] font-bold text-indigo-600 mt-1">Asistan</span>
         </button>
-        <button onclick="app.nav('hardware')" id="m-hardware" class="nav-item flex flex-col items-center p-2 rounded-lg w-16 transition-colors">
+        <button onclick="app.nav('hardware')" id="m-hardware" class="nav-item flex flex-col items-center justify-center p-2 rounded-lg w-14 transition-colors">
             <i class="ri-cpu-line text-xl mb-0.5"></i>
             <span class="text-[9px] font-medium">Donanım</span>
         </button>
-        <button onclick="app.nav('software')" id="m-software" class="nav-item flex flex-col items-center p-2 rounded-lg w-16 transition-colors">
+        <button onclick="app.nav('software')" id="m-software" class="nav-item flex flex-col items-center justify-center p-2 rounded-lg w-14 transition-colors">
             <i class="ri-code-s-slash-line text-xl mb-0.5"></i>
             <span class="text-[9px] font-medium">Yazılım</span>
         </button>
     </nav>
 
     <script>
-        // API Configuration
-        const API_KEY = ""; // Buraya kendi Gemini API anahtarınızı girin
+        // API KEY Python'dan buraya inject edilecek
+        const API_KEY = ""; 
 
         const app = {
             chart: null,
@@ -480,16 +476,16 @@
                 if(dBtn) dBtn.classList.add('active');
                 if(mBtn) mBtn.classList.add('active');
 
-                // Sayfayı yukarı kaydır
-                window.scrollTo({top: 0, behavior: 'smooth'});
-
                 // AI butonu özel durumu
                 const aiBtn = document.getElementById('d-ai');
                 if(id === 'ai') {
-                    aiBtn.classList.replace('bg-indigo-600', 'bg-indigo-800');
+                    if(aiBtn) aiBtn.classList.replace('bg-indigo-600', 'bg-indigo-800');
                 } else {
-                    aiBtn.classList.replace('bg-indigo-800', 'bg-indigo-600');
+                    if(aiBtn) aiBtn.classList.replace('bg-indigo-800', 'bg-indigo-600');
                 }
+
+                // Sayfayı yukarı kaydır
+                window.scrollTo({top: 0, behavior: 'smooth'});
             },
 
             // Grafik Oluşturma (Radar Chart)
@@ -498,29 +494,23 @@
                 app.chart = new Chart(ctx, {
                     type: 'radar',
                     data: {
-                        labels: ['Hassasiyet', 'Seçicilik (Yanlış Alarm Yok)', 'R-32 Uyumu', 'Maliyet Avantajı', 'Ömür'],
+                        labels: ['Hassasiyet', 'Seçicilik', 'R-32 Uyumu', 'Maliyet', 'Ömür'],
                         datasets: [
                             {
                                 label: 'TGS 2630 (Önerilen)',
                                 data: [85, 90, 95, 60, 80],
                                 backgroundColor: 'rgba(14, 165, 233, 0.2)',
                                 borderColor: '#0ea5e9',
-                                borderWidth: 2
+                                borderWidth: 2,
+                                pointRadius: 2
                             },
                             {
                                 label: 'MQ-135 (Hobi)',
                                 data: [40, 20, 30, 95, 40],
                                 backgroundColor: 'rgba(239, 68, 68, 0.2)',
                                 borderColor: '#ef4444',
-                                borderWidth: 2
-                            },
-                            {
-                                label: 'ZRT510 (NDIR)',
-                                data: [95, 100, 100, 10, 95], // Maliyet çok düşük puan (pahalı)
-                                backgroundColor: 'rgba(100, 116, 139, 0.2)',
-                                borderColor: '#64748b',
-                                borderWidth: 1,
-                                borderDash: [5, 5]
+                                borderWidth: 2,
+                                pointRadius: 2
                             }
                         ]
                     },
@@ -536,7 +526,7 @@
                             }
                         },
                         plugins: {
-                            legend: { position: 'bottom', labels: { usePointStyle: true, font: { size: 11 } } }
+                            legend: { position: 'bottom', labels: { usePointStyle: true, font: { size: 10 }, boxWidth: 8 } }
                         }
                     }
                 });
@@ -555,7 +545,7 @@
                 const bubbleClass = sender === 'user' ? 'bubble-user' : 'bubble-ai';
                 const content = sender === 'ai' ? marked.parse(text) : text;
 
-                div.innerHTML = `${icon}<div class="${bubbleClass} p-3 text-sm max-w-[85%] shadow-sm overflow-hidden">${content}</div>`;
+                div.innerHTML = `${icon}<div class="${bubbleClass} p-3 text-sm max-w-[85%] shadow-sm overflow-hidden prose prose-sm max-w-none">${content}</div>`;
                 container.appendChild(div);
                 container.scrollTop = container.scrollHeight;
             },
