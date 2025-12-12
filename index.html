@@ -29,8 +29,9 @@
         .bubble-user { background: linear-gradient(135deg, #0ea5e9, #2563eb); color: white; border-radius: 16px 16px 0 16px; }
         .bubble-ai { background: white; border: 1px solid #e2e8f0; color: #1e293b; border-radius: 16px 16px 16px 0; }
         
-        pre { background: #1e293b !important; color: #e2e8f0; padding: 0.75rem; border-radius: 0.5rem; overflow-x: auto; font-size: 0.8rem; }
-        
+        pre { background: #1e293b !important; color: #e2e8f0; padding: 0.75rem; border-radius: 0.5rem; overflow-x: auto; font-size: 0.75rem; font-family: 'Fira Code', monospace; }
+        code { color: #38bdf8; }
+
         .typing-dot { animation: typing 1.4s infinite ease-in-out both; }
         .typing-dot:nth-child(1) { animation-delay: -0.32s; }
         .typing-dot:nth-child(2) { animation-delay: -0.16s; }
@@ -39,7 +40,7 @@
         
         /* Accordion Animasyonu */
         .details-content { transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out; max-height: 0; opacity: 0; overflow: hidden; }
-        .details-content.open { max-height: 500px; opacity: 1; }
+        .details-content.open { max-height: 600px; opacity: 1; }
     </style>
 </head>
 <body class="flex flex-col min-h-screen pb-24 md:pb-0">
@@ -72,8 +73,6 @@
         <section id="s-overview" class="fade-in space-y-5">
             <div class="bg-slate-900 rounded-2xl md:rounded-3xl p-6 md:p-12 text-white relative overflow-hidden shadow-xl shadow-slate-200">
                 <div class="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-sky-500 rounded-full mix-blend-overlay filter blur-3xl opacity-20 -mr-16 -mt-16 pointer-events-none"></div>
-                <div class="absolute bottom-0 left-0 w-48 h-48 md:w-72 md:h-72 bg-indigo-500 rounded-full mix-blend-overlay filter blur-3xl opacity-20 -ml-12 -mb-12 pointer-events-none"></div>
-                
                 <div class="relative z-10 max-w-3xl">
                     <span class="inline-flex items-center gap-1.5 py-1 px-2.5 rounded-full bg-sky-500/20 border border-sky-500/30 text-sky-300 text-[10px] md:text-xs font-bold mb-4 backdrop-blur-sm">
                         <i class="ri-file-list-3-line"></i> TEKNİK RAPOR ÖZETİ
@@ -82,157 +81,66 @@
                     <p class="text-slate-300 text-sm md:text-lg leading-relaxed mb-6 md:mb-8">
                         Üniversite kampüsleri ve kritik altyapılar için, özellikle <strong>R-32 ve R-410A</strong> gibi yeni nesil soğutucu akışkanları tespit eden, yanlış alarmlardan arındırılmış güvenlik sistemi.
                     </p>
-                    
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 text-center md:text-left">
-                        <div class="bg-white/5 p-3 rounded-lg md:bg-transparent md:p-0">
-                            <div class="text-2xl md:text-3xl font-bold text-sky-400">A2L</div>
-                            <div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide mt-1">Hedef Gaz</div>
-                        </div>
-                        <div class="bg-white/5 p-3 rounded-lg md:bg-transparent md:p-0">
-                            <div class="text-2xl md:text-3xl font-bold text-sky-400">%14.4</div>
-                            <div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide mt-1">R-32 LFL Limiti</div>
-                        </div>
-                        <div class="bg-white/5 p-3 rounded-lg md:bg-transparent md:p-0">
-                            <div class="text-2xl md:text-3xl font-bold text-sky-400">IoT</div>
-                            <div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide mt-1">MQTT & Flutter</div>
-                        </div>
-                        <div class="bg-white/5 p-3 rounded-lg md:bg-transparent md:p-0">
-                            <div class="text-2xl md:text-3xl font-bold text-sky-400">12</div>
-                            <div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide mt-1">Haftalık Plan</div>
-                        </div>
+                        <div class="bg-white/5 p-3 rounded-lg md:bg-transparent md:p-0"><div class="text-2xl md:text-3xl font-bold text-sky-400">A2L</div><div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide mt-1">Hedef Gaz</div></div>
+                        <div class="bg-white/5 p-3 rounded-lg md:bg-transparent md:p-0"><div class="text-2xl md:text-3xl font-bold text-sky-400">%14.4</div><div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide mt-1">R-32 LFL Limiti</div></div>
+                        <div class="bg-white/5 p-3 rounded-lg md:bg-transparent md:p-0"><div class="text-2xl md:text-3xl font-bold text-sky-400">IoT</div><div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide mt-1">MQTT & Flutter</div></div>
+                        <div class="bg-white/5 p-3 rounded-lg md:bg-transparent md:p-0"><div class="text-2xl md:text-3xl font-bold text-sky-400">12</div><div class="text-[10px] md:text-xs text-slate-400 uppercase tracking-wide mt-1">Haftalık Plan</div></div>
                     </div>
                 </div>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div class="bg-white p-5 md:p-6 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 class="font-bold text-slate-800 text-base md:text-lg mb-2 flex items-center gap-2">
-                        <div class="p-1.5 bg-orange-100 rounded text-orange-600"><i class="ri-alert-fill"></i></div> Problem
-                    </h3>
-                    <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-                        Çevresel regülasyonlar nedeniyle R-410A yerini <strong>R-32</strong>'ye bırakıyor. R-32 "Düşük Yanıcı" (A2L) sınıfındadır. Kapalı alanlarda sızıntı risklidir.
-                    </p>
+                    <h3 class="font-bold text-slate-800 text-base md:text-lg mb-2 flex items-center gap-2"><div class="p-1.5 bg-orange-100 rounded text-orange-600"><i class="ri-alert-fill"></i></div> Problem</h3>
+                    <p class="text-slate-600 text-xs md:text-sm leading-relaxed">Çevresel regülasyonlar nedeniyle R-410A yerini <strong>R-32</strong>'ye bırakıyor. R-32 "Düşük Yanıcı" (A2L) sınıfındadır.</p>
                 </div>
                 <div class="bg-white p-5 md:p-6 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 class="font-bold text-slate-800 text-base md:text-lg mb-2 flex items-center gap-2">
-                        <div class="p-1.5 bg-green-100 rounded text-green-600"><i class="ri-checkbox-circle-fill"></i></div> Çözüm
-                    </h3>
-                    <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-                        MQ-135 gibi hobi sensörleri alkole alarm verir. Proje, <strong>filtreli endüstriyel sensörler</strong> (TGS2630) ve güvenli donanım kullanır.
-                    </p>
+                    <h3 class="font-bold text-slate-800 text-base md:text-lg mb-2 flex items-center gap-2"><div class="p-1.5 bg-green-100 rounded text-green-600"><i class="ri-checkbox-circle-fill"></i></div> Çözüm</h3>
+                    <p class="text-slate-600 text-xs md:text-sm leading-relaxed">MQ-135 gibi hobi sensörleri alkole alarm verir. Proje, <strong>filtreli endüstriyel sensörler</strong> (TGS2630) kullanır.</p>
                 </div>
             </div>
         </section>
 
         <section id="s-analysis" class="hidden fade-in space-y-6">
             <div class="flex flex-col md:flex-row gap-6">
-                
                 <div class="w-full md:w-1/3 space-y-4">
                     <div class="bg-blue-600 rounded-2xl p-5 md:p-6 text-white shadow-lg shadow-blue-200">
                         <div class="flex items-center gap-3 mb-4">
                             <i class="ri-download-2-line text-2xl bg-white/20 p-2 rounded-lg"></i>
-                            <div>
-                                <h3 class="font-bold text-sm md:text-base">Fizik Kuralı</h3>
-                                <p class="text-[10px] md:text-xs text-blue-100">R-32 Yoğunluğu > Hava</p>
-                            </div>
+                            <div><h3 class="font-bold text-sm md:text-base">Fizik Kuralı</h3><p class="text-[10px] md:text-xs text-blue-100">R-32 Yoğunluğu > Hava</p></div>
                         </div>
-                        <p class="text-xs md:text-sm text-blue-50 leading-relaxed mb-4">
-                            Soğutucu gazlar havadan ağırdır. Kaçak anında gaz <strong>zemine çöker</strong>. Tavandaki sensör işe yaramaz.
-                        </p>
-                        <div class="bg-white/10 rounded-lg p-3 border border-white/20">
-                            <p class="text-xs font-semibold text-center flex items-center justify-center gap-2">
-                                <i class="ri-map-pin-line"></i> Montaj: Zeminden 30-50 cm
-                            </p>
-                        </div>
+                        <p class="text-xs md:text-sm text-blue-50 leading-relaxed mb-4">Soğutucu gazlar havadan ağırdır. Kaçak anında gaz <strong>zemine çöker</strong>.</p>
+                        <div class="bg-white/10 rounded-lg p-3 border border-white/20"><p class="text-xs font-semibold text-center flex items-center justify-center gap-2"><i class="ri-map-pin-line"></i> Montaj: Zeminden 30-50 cm</p></div>
                     </div>
-
                     <div class="bg-white rounded-2xl p-4 md:p-5 border border-slate-100 shadow-sm">
-                        <div class="flex justify-between items-center mb-3">
-                            <h4 class="font-bold text-slate-700 text-sm">Hedef Gazlar</h4>
-                            <span class="text-[10px] text-slate-400 flex items-center gap-1"><i class="ri-cursor-line"></i> Detay için tıkla</span>
-                        </div>
-                        
+                        <div class="flex justify-between items-center mb-3"><h4 class="font-bold text-slate-700 text-sm">Hedef Gazlar</h4><span class="text-[10px] text-slate-400 flex items-center gap-1"><i class="ri-cursor-line"></i> Detay</span></div>
                         <div class="space-y-3">
                             <div onclick="app.toggleDetail('r410a')" class="cursor-pointer group">
                                 <div class="flex justify-between items-center p-3 bg-slate-50 rounded-lg group-hover:bg-slate-100 transition-colors">
-                                    <div class="flex items-center gap-2">
-                                        <i class="ri-arrow-down-s-line text-slate-400 group-hover:text-sky-500 transition-transform" id="icon-r410a"></i>
-                                        <span class="text-xs md:text-sm font-medium">R-410A</span>
-                                    </div>
-                                    <span class="text-[10px] bg-slate-200 px-2 py-1 rounded text-slate-600">Yaygın</span>
+                                    <div class="flex items-center gap-2"><i class="ri-arrow-down-s-line text-slate-400 group-hover:text-sky-500 transition-transform" id="icon-r410a"></i><span class="text-xs md:text-sm font-medium">R-410A</span></div><span class="text-[10px] bg-slate-200 px-2 py-1 rounded text-slate-600">Yaygın</span>
                                 </div>
-                                <div id="info-r410a" class="details-content bg-slate-50/50 rounded-b-lg border-x border-b border-slate-100 mx-1">
-                                    <div class="p-3 text-[11px] text-slate-600 leading-relaxed">
-                                        <p class="mb-2"><strong>Nedir?</strong> R-32 ve R-125 karışımıdır. Mevcut sistemlerin çoğunda bulunur.</p>
-                                        <p><strong>Amaç:</strong> Yanıcı değildir (A1) ancak R-32 içerdiği için sensörümüz bunu da algılar.</p>
-                                    </div>
-                                </div>
+                                <div id="info-r410a" class="details-content bg-slate-50/50 rounded-b-lg border-x border-b border-slate-100 mx-1"><div class="p-3 text-[11px] text-slate-600 leading-relaxed"><p><strong>Nedir?</strong> R-32 ve R-125 karışımı. Yanıcı değildir (A1) ama boğucudur.</p></div></div>
                             </div>
-
                             <div onclick="app.toggleDetail('r32')" class="cursor-pointer group">
                                 <div class="flex justify-between items-center p-3 bg-orange-50 rounded-lg border border-orange-100 group-hover:bg-orange-100 transition-colors">
-                                    <div class="flex items-center gap-2">
-                                        <i class="ri-arrow-down-s-line text-orange-400 group-hover:text-orange-600 transition-transform" id="icon-r32"></i>
-                                        <span class="text-xs md:text-sm font-bold text-orange-800">R-32</span>
-                                    </div>
-                                    <span class="text-[10px] bg-orange-200 text-orange-800 px-2 py-1 rounded font-bold">Yanıcı (A2L)</span>
+                                    <div class="flex items-center gap-2"><i class="ri-arrow-down-s-line text-orange-400 group-hover:text-orange-600 transition-transform" id="icon-r32"></i><span class="text-xs md:text-sm font-bold text-orange-800">R-32</span></div><span class="text-[10px] bg-orange-200 text-orange-800 px-2 py-1 rounded font-bold">Yanıcı (A2L)</span>
                                 </div>
-                                <div id="info-r32" class="details-content bg-orange-50/50 rounded-b-lg border-x border-b border-orange-100 mx-1">
-                                    <div class="p-3 text-[11px] text-slate-700 leading-relaxed">
-                                        <p class="mb-2"><strong>Nedir?</strong> Saf Diflorometan. Yeni nesil, yüksek verimli ancak <strong>yanıcıdır</strong>.</p>
-                                        <p><strong>Amaç:</strong> Kapalı alanda birikirse patlayabilir (LFL %14.4). Erken uyarı hayati önem taşır.</p>
-                                    </div>
-                                </div>
+                                <div id="info-r32" class="details-content bg-orange-50/50 rounded-b-lg border-x border-b border-orange-100 mx-1"><div class="p-3 text-[11px] text-slate-700 leading-relaxed"><p><strong>Tehlike:</strong> LFL %14.4. Kapalı alanda patlayıcıdır. Erken tespit şarttır.</p></div></div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="w-full md:w-2/3 bg-white rounded-2xl p-5 md:p-6 shadow-sm border border-slate-100">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="font-bold text-base md:text-lg text-slate-800">Sensör Analizi</h3>
-                        <span class="text-[10px] text-slate-400 bg-slate-50 px-2 py-1 rounded">Rapor Bölüm 3.4</span>
-                    </div>
-
-                    <div class="relative h-56 md:h-64 w-full mb-6">
-                        <canvas id="sensorChart"></canvas>
-                    </div>
-
+                    <div class="flex justify-between items-center mb-4"><h3 class="font-bold text-base md:text-lg text-slate-800">Sensör Analizi</h3><span class="text-[10px] text-slate-400 bg-slate-50 px-2 py-1 rounded">Rapor Bölüm 3.4</span></div>
+                    <div class="relative h-56 md:h-64 w-full mb-6"><canvas id="sensorChart"></canvas></div>
                     <div class="overflow-x-auto -mx-5 md:mx-0 px-5 md:px-0">
                         <table class="w-full text-xs md:text-sm text-left whitespace-nowrap md:whitespace-normal">
-                            <thead class="bg-slate-50 text-slate-500 font-medium">
-                                <tr>
-                                    <th class="p-3 rounded-l-lg">Model</th>
-                                    <th class="p-3">Teknoloji</th>
-                                    <th class="p-3">Hata Oranı</th>
-                                    <th class="p-3 rounded-r-lg">Karar</th>
-                                </tr>
-                            </thead>
+                            <thead class="bg-slate-50 text-slate-500 font-medium"><tr><th class="p-3 rounded-l-lg">Model</th><th class="p-3">Teknoloji</th><th class="p-3">Hata</th><th class="p-3 rounded-r-lg">Karar</th></tr></thead>
                             <tbody class="divide-y divide-slate-100">
-                                <tr class="opacity-50">
-                                    <td class="p-3 font-mono text-red-500 font-bold">MQ-135</td>
-                                    <td class="p-3">Hobi MOS</td>
-                                    <td class="p-3 text-red-500">Çok Yüksek</td>
-                                    <td class="p-3"><span class="px-2 py-1 bg-red-100 text-red-700 rounded text-[10px] font-bold">RED</span></td>
-                                </tr>
-                                <tr class="bg-sky-50/50">
-                                    <td class="p-3 font-mono font-bold text-sky-700">TGS 2630</td>
-                                    <td class="p-3">Filtreli MOS</td>
-                                    <td class="p-3 text-green-600">Düşük (Filtreli)</td>
-                                    <td class="p-3"><span class="px-2 py-1 bg-sky-100 text-sky-700 rounded text-[10px] font-bold">ONAY</span></td>
-                                </tr>
-                                <tr class="bg-amber-50/50">
-                                    <td class="p-3 font-mono font-bold text-amber-700">MP510C</td>
-                                    <td class="p-3">Planar MOS</td>
-                                    <td class="p-3 text-amber-600">Orta (Yeterli)</td>
-                                    <td class="p-3"><span class="px-2 py-1 bg-amber-100 text-amber-700 rounded text-[10px] font-bold">EKONOMİK</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="p-3 font-mono text-slate-700">ZRT 510</td>
-                                    <td class="p-3">NDIR (IR)</td>
-                                    <td class="p-3 text-green-600">Yok (Mükemmel)</td>
-                                    <td class="p-3"><span class="px-2 py-1 bg-slate-100 text-slate-600 rounded text-[10px]">PAHALI</span></td>
-                                </tr>
+                                <tr class="opacity-50"><td class="p-3 font-mono text-red-500 font-bold">MQ-135</td><td class="p-3">Hobi MOS</td><td class="p-3 text-red-500">Yüksek</td><td class="p-3"><span class="px-2 py-1 bg-red-100 text-red-700 rounded text-[10px] font-bold">RED</span></td></tr>
+                                <tr class="bg-sky-50/50"><td class="p-3 font-mono font-bold text-sky-700">TGS 2630</td><td class="p-3">Filtreli MOS</td><td class="p-3 text-green-600">Düşük</td><td class="p-3"><span class="px-2 py-1 bg-sky-100 text-sky-700 rounded text-[10px] font-bold">ONAY</span></td></tr>
+                                <tr class="bg-amber-50/50"><td class="p-3 font-mono font-bold text-amber-700">MP510C</td><td class="p-3">Planar MOS</td><td class="p-3 text-amber-600">Orta</td><td class="p-3"><span class="px-2 py-1 bg-amber-100 text-amber-700 rounded text-[10px] font-bold">EKO</span></td></tr>
+                                <tr><td class="p-3 font-mono text-slate-700">ZRT 510</td><td class="p-3">NDIR (IR)</td><td class="p-3 text-green-600">Yok</td><td class="p-3"><span class="px-2 py-1 bg-slate-100 text-slate-600 rounded text-[10px]">PAHALI</span></td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -244,108 +152,43 @@
             <div class="bg-white rounded-2xl p-5 md:p-6 shadow-sm border border-slate-100">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="font-bold text-slate-800 text-base md:text-lg">Sistem Bileşenleri (BOM)</h3>
-                    <span class="text-[10px] text-slate-400 flex items-center gap-1"><i class="ri-cursor-line"></i> Detay için tıkla</span>
+                    <span class="text-[10px] text-slate-400 flex items-center gap-1"><i class="ri-cursor-line"></i> Detay</span>
                 </div>
-                
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    
                     <div onclick="app.toggleDetail('esp32')" class="group p-4 rounded-xl border border-slate-200 bg-slate-50 transition-all hover:bg-white hover:shadow-md cursor-pointer h-fit">
                         <div class="flex justify-between items-start mb-2">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 bg-sky-100 rounded-lg flex items-center justify-center text-sky-600">
-                                    <i class="ri-cpu-line text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-slate-700 text-sm">ESP32</h4>
-                                    <p class="text-[10px] text-slate-400">Ana İşlemci</p>
-                                </div>
-                            </div>
+                            <div class="flex items-center gap-3"><div class="w-10 h-10 bg-sky-100 rounded-lg flex items-center justify-center text-sky-600"><i class="ri-cpu-line text-xl"></i></div><div><h4 class="font-bold text-slate-700 text-sm">ESP32</h4><p class="text-[10px] text-slate-400">İşlemci</p></div></div>
                             <i class="ri-arrow-down-s-line text-slate-300 group-hover:text-sky-500 transition-transform" id="icon-esp32"></i>
                         </div>
-                        <p class="text-xs text-slate-500 mb-2">Arduino yerine tercih edilmelidir.</p>
-                        <div class="flex flex-wrap gap-1 mb-2">
-                            <span class="text-[10px] bg-white border border-slate-200 px-1.5 py-0.5 rounded text-slate-600">Wi-Fi & BT</span>
-                            <span class="text-[10px] bg-white border border-slate-200 px-1.5 py-0.5 rounded text-slate-600">3.3V Logic</span>
-                        </div>
-                        <div id="info-esp32" class="details-content border-t border-slate-200 mt-2 pt-2">
-                            <p class="text-[11px] text-slate-600 leading-relaxed">
-                                <strong>Neden?</strong> Çift çekirdekli yapısı ve dahili Wi-Fi modülü ile IoT projeleri için idealdir. Arduino'dan çok daha hızlıdır. <br>
-                                <strong>Dikkat:</strong> 3.3V ile çalışır. 5V sensörleri doğrudan bağlamayın, yakarsınız.
-                            </p>
-                        </div>
+                        <div id="info-esp32" class="details-content border-t border-slate-200 mt-2 pt-2"><p class="text-[11px] text-slate-600"><strong>Neden?</strong> Dahili Wi-Fi/BT ve çift çekirdek. Arduino'dan üstündür.<br><strong>Dikkat:</strong> 3.3V Logic seviyesi.</p></div>
                     </div>
-
                     <div onclick="app.toggleDetail('sensor')" class="group p-4 rounded-xl border-2 border-green-100 bg-green-50/30 relative cursor-pointer h-fit">
                         <div class="absolute top-3 right-3 w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
                         <div class="flex justify-between items-start mb-2">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600">
-                                    <i class="ri-sensor-fill text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-slate-700 text-sm">Gaz Sensörü</h4>
-                                    <p class="text-[10px] text-green-600">TGS / MP510C</p>
-                                </div>
-                            </div>
+                            <div class="flex items-center gap-3"><div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600"><i class="ri-sensor-fill text-xl"></i></div><div><h4 class="font-bold text-slate-700 text-sm">Gaz Sensörü</h4><p class="text-[10px] text-green-600">TGS / MP510C</p></div></div>
                             <i class="ri-arrow-down-s-line text-green-400 group-hover:text-green-700 transition-transform" id="icon-sensor"></i>
                         </div>
-                        <p class="text-xs text-slate-500 mb-3">R-32 için filtreli özel sensör.</p>
-                        
-                        <a href="https://www.ozdisan.com/p/gaz-sensorleri-915/figaro-tgs2600-433747?srsltid=AfmBOopCwS-_tUTd4Q2mtEGaD2QPb7GTyHJdHO-sErfnjeYIxzp-9r9m" target="_blank" onclick="event.stopPropagation();" class="block w-full py-2 bg-green-600 active:bg-green-700 text-white text-xs font-bold text-center rounded-lg shadow-sm shadow-green-200 transition-transform active:scale-95 mb-2">
-                            <i class="ri-shopping-cart-2-line"></i> Özdisan'dan Al
-                        </a>
-
-                        <div id="info-sensor" class="details-content border-t border-green-200 mt-2 pt-2">
-                            <p class="text-[11px] text-slate-600 leading-relaxed">
-                                <strong>Neden?</strong> TGS2630 (veya muadili MP510C/TGS2600), alkol gibi ev kimyasallarına yanlış alarm vermez. <br>
-                                <strong>Bağlantı:</strong> Isıtıcı bacaklarına 5V verilir. Okuma bacağı "Gerilim Bölücü" ile ESP32'ye girer.
-                            </p>
-                        </div>
+                        <a href="https://www.ozdisan.com/p/gaz-sensorleri-915/figaro-tgs2600-433747?srsltid=AfmBOopCwS-_tUTd4Q2mtEGaD2QPb7GTyHJdHO-sErfnjeYIxzp-9r9m" target="_blank" onclick="event.stopPropagation();" class="block w-full py-2 bg-green-600 active:bg-green-700 text-white text-xs font-bold text-center rounded-lg shadow-sm mb-2"><i class="ri-shopping-cart-2-line"></i> Özdisan'dan Al</a>
+                        <div id="info-sensor" class="details-content border-t border-green-200 mt-2 pt-2"><p class="text-[11px] text-slate-600"><strong>Neden?</strong> Aktif karbon filtresi ile yanlış alarmları önler. 5V ile çalışır.</p></div>
                     </div>
-
                     <div onclick="app.toggleDetail('power')" class="group p-4 rounded-xl border border-slate-200 bg-slate-50 transition-all hover:bg-white hover:shadow-md cursor-pointer h-fit">
                         <div class="flex justify-between items-start mb-2">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600">
-                                    <i class="ri-plug-line text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-slate-700 text-sm">Güç & SSR</h4>
-                                    <p class="text-[10px] text-slate-400">Güvenlik Katı</p>
-                                </div>
-                            </div>
+                            <div class="flex items-center gap-3"><div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600"><i class="ri-plug-line text-xl"></i></div><div><h4 class="font-bold text-slate-700 text-sm">Güç & SSR</h4><p class="text-[10px] text-slate-400">Güvenlik</p></div></div>
                             <i class="ri-arrow-down-s-line text-slate-300 group-hover:text-orange-500 transition-transform" id="icon-power"></i>
                         </div>
-                        <p class="text-xs text-slate-500 mb-2">Gaz kaçağı anında güvenlik.</p>
-                        <div class="flex flex-wrap gap-1 mb-2">
-                            <span class="text-[10px] bg-white border border-slate-200 px-1.5 py-0.5 rounded text-slate-600">5V 2A</span>
-                            <span class="text-[10px] bg-white border border-slate-200 px-1.5 py-0.5 rounded text-slate-600">SSR Röle</span>
-                        </div>
-                        <div id="info-power" class="details-content border-t border-slate-200 mt-2 pt-2">
-                            <p class="text-[11px] text-slate-600 leading-relaxed">
-                                <strong>Neden SSR?</strong> Mekanik röleler açılıp kapanırken "kıvılcım" (ark) çıkarır. Gaz sızıntısı olan ortamda bu patlamaya yol açar. Solid State Relay (SSR) kıvılcım çıkarmaz, güvenlidir.
-                            </p>
-                        </div>
+                        <div id="info-power" class="details-content border-t border-slate-200 mt-2 pt-2"><p class="text-[11px] text-slate-600"><strong>Neden SSR?</strong> Mekanik röle kıvılcım çıkarır, gaz ortamında patlatır. Solid State Relay (SSR) kıvılcımsızdır.</p></div>
                     </div>
                 </div>
             </div>
-
             <div class="bg-indigo-900 rounded-2xl p-5 md:p-6 text-indigo-100 relative overflow-hidden">
                 <div class="flex flex-col md:flex-row gap-6 items-start md:items-center relative z-10">
                     <div class="flex-1">
-                        <h3 class="font-bold text-white text-base md:text-lg mb-2 flex items-center gap-2">
-                            [cite_start]<i class="ri-tools-line"></i> 5V - 3.3V Uyumu [cite: 121]
-                        </h3>
-                        <p class="text-xs md:text-sm text-indigo-200 mb-3">
-                            Sensör 5V verir, ESP32 3.3V alır. Doğrudan bağlama! <strong>Gerilim Bölücü</strong> kullan.
-                        </p>
-                        <div class="inline-block bg-black/30 p-2.5 rounded-lg font-mono text-xs border border-indigo-500/30">
-                            V_esp = V_sensor * (R2 / (R1 + R2))
-                        </div>
-                        [cite_start]<p class="text-[10px] mt-2 opacity-70">R1 = 2.2kΩ, R2 = 3.3kΩ [cite: 130]</p>
+                        <h3 class="font-bold text-white text-base md:text-lg mb-2 flex items-center gap-2"><i class="ri-tools-line"></i> 5V - 3.3V Uyumu</h3>
+                        <p class="text-xs md:text-sm text-indigo-200 mb-3">Sensör 5V, ESP32 3.3V. <strong>Gerilim Bölücü</strong> şart.</p>
+                        <div class="inline-block bg-black/30 p-2.5 rounded-lg font-mono text-xs border border-indigo-500/30">V_esp = V_sensor * (R2 / (R1 + R2))</div>
                     </div>
                     <div class="w-full md:w-auto bg-white/10 p-3 rounded-xl border border-white/10 min-w-[200px]">
-                        <h4 class="text-[10px] font-bold uppercase tracking-wider mb-2 text-indigo-300">Bağlantı Şeması</h4>
+                        <h4 class="text-[10px] font-bold uppercase tracking-wider mb-2 text-indigo-300">Bağlantı</h4>
                         <div class="space-y-1.5 text-[10px] md:text-xs font-mono">
                             <div class="flex justify-between"><span>VCC</span> <span class="text-indigo-400">-></span> <span class="text-red-300">5V</span></div>
                             <div class="flex justify-between"><span>GND</span> <span class="text-indigo-400">-></span> <span>GND</span></div>
@@ -357,69 +200,124 @@
         </section>
 
         <section id="s-software" class="hidden fade-in space-y-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white rounded-2xl p-5 md:p-6 shadow-sm border border-slate-100">
-                    <h3 class="font-bold text-slate-800 text-base md:text-lg mb-4">Yazılım Stratejisi</h3>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-3">
-                            <div class="w-8 h-8 rounded-full bg-violet-100 flex items-center justify-center text-violet-600 mt-1 shrink-0"><i class="ri-functions-line"></i></div>
-                            <div>
-                                [cite_start]<h4 class="font-bold text-sm text-slate-700">Oversampling [cite: 160]</h4>
-                                <p class="text-xs text-slate-500">100ms'de 50 okuma ortalaması alarak gürültüyü temizle.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="w-8 h-8 rounded-full bg-sky-100 flex items-center justify-center text-sky-600 mt-1 shrink-0"><i class="ri-cloud-line"></i></div>
-                            <div>
-                                [cite_start]<h4 class="font-bold text-sm text-slate-700">MQTT & JSON [cite: 181]</h4>
-                                <p class="text-xs text-slate-500">Hızlı veri aktarımı için hafif protokol.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 mt-1 shrink-0"><i class="ri-smartphone-line"></i></div>
-                            <div>
-                                [cite_start]<h4 class="font-bold text-sm text-slate-700">Flutter App [cite: 196]</h4>
-                                <p class="text-xs text-slate-500">iOS/Android uyumlu kontrol paneli.</p>
-                            </div>
-                        </li>
-                    </ul>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                
+                <div onclick="app.toggleDetail('code-over')" class="group bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:border-violet-200 transition-all cursor-pointer h-fit">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-violet-100 flex items-center justify-center text-violet-600"><i class="ri-functions-line text-xl"></i></div>
+                        <i class="ri-code-s-slash-line text-slate-300 group-hover:text-violet-500 text-xl transition-colors"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-800 text-sm mb-1">Oversampling</h4>
+                    <p class="text-xs text-slate-500">Sinyal gürültüsünü temizlemek için ortalama alma.</p>
+                    
+                    <div id="info-code-over" class="details-content mt-3">
+                        <pre><code>float sensorValue = 0;
+for(int i=0; i<100; i++){
+  sensorValue += analogRead(PIN);
+  delay(1);
+}
+sensorValue /= 100.0;</code></pre>
+                    </div>
                 </div>
 
-                <div class="bg-white rounded-2xl p-5 md:p-6 shadow-sm border border-slate-100 relative">
-                    <h3 class="font-bold text-slate-800 text-base md:text-lg mb-6">12 Haftalık Plan</h3>
-                    <div class="absolute left-[31px] md:left-[33px] top-20 bottom-10 w-0.5 bg-slate-200"></div>
+                <div onclick="app.toggleDetail('code-mqtt')" class="group bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:border-sky-200 transition-all cursor-pointer h-fit">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-sky-100 flex items-center justify-center text-sky-600"><i class="ri-cloud-line text-xl"></i></div>
+                        <i class="ri-braces-line text-slate-300 group-hover:text-sky-500 text-xl transition-colors"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-800 text-sm mb-1">MQTT & JSON</h4>
+                    <p class="text-xs text-slate-500">Hafif veri paketi formatı.</p>
                     
-                    <div class="space-y-6 relative">
-                        <div class="flex gap-4 relative">
-                            <div class="w-6 h-6 rounded-full bg-sky-500 border-4 border-white shadow-sm shrink-0 z-10"></div>
-                            <div class="-mt-1">
-                                <span class="text-[10px] font-bold text-sky-500 bg-sky-50 px-2 py-0.5 rounded">1-2. Hafta</span>
-                                <h4 class="text-sm font-bold text-slate-800 mt-1">Malzeme & Araştırma</h4>
-                                <p class="text-xs text-slate-500 mt-0.5">TGS2630 siparişi, MSDS incelemesi.</p>
+                    <div id="info-code-mqtt" class="details-content mt-3">
+                        <pre><code>{
+  "id": "Lab_Zemin_1",
+  "r32_ppm": 450,
+  "status": "NORMAL",
+  "temp": 24.5
+}</code></pre>
+                        <p class="text-[10px] text-slate-400 mt-2 font-mono">Topic: uni/kampus/lab/sensor</p>
+                    </div>
+                </div>
+
+                <div onclick="app.toggleDetail('code-app')" class="group bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:border-green-200 transition-all cursor-pointer h-fit">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center text-green-600"><i class="ri-smartphone-line text-xl"></i></div>
+                        <i class="ri-notification-3-line text-slate-300 group-hover:text-green-500 text-xl transition-colors"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-800 text-sm mb-1">Mobil App</h4>
+                    <p class="text-xs text-slate-500">Firebase ile anlık tehlike bildirimi.</p>
+                    
+                    <div id="info-code-app" class="details-content mt-3 border-t border-slate-100 pt-2">
+                        <ul class="text-[11px] text-slate-600 space-y-1">
+                            <li><i class="ri-checkbox-circle-fill text-green-500"></i> Dashboard (Canlı)</li>
+                            <li><i class="ri-checkbox-circle-fill text-green-500"></i> Geçmiş Grafik</li>
+                            <li><i class="ri-alarm-warning-fill text-red-500"></i> Push Notification</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                <h3 class="font-bold text-slate-800 text-base md:text-lg mb-6">12 Haftalık Plan</h3>
+                
+                <div class="relative border-l-2 border-slate-200 ml-3 space-y-8 pb-2">
+                    <div onclick="app.toggleDetail('phase1')" class="group relative pl-8 cursor-pointer">
+                        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white border-2 border-sky-500 group-hover:scale-125 transition-transform"></div>
+                        <div class="flex flex-col">
+                            <span class="text-[10px] font-bold text-sky-500 uppercase tracking-wide">Hafta 1-2</span>
+                            <h4 class="text-sm font-bold text-slate-700 group-hover:text-sky-600 transition-colors">Araştırma & Tedarik</h4>
+                            <div id="info-phase1" class="details-content mt-2">
+                                <ul class="text-xs text-slate-500 list-disc list-inside">
+                                    <li>TGS2630 / MP510C siparişi</li>
+                                    <li>ESP32 temini</li>
+                                    <li>R-32 MSDS incelemesi</li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="flex gap-4 relative">
-                            <div class="w-6 h-6 rounded-full bg-white border-4 border-slate-300 shadow-sm shrink-0 z-10"></div>
-                            <div class="-mt-1">
-                                <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">3-5. Hafta</span>
-                                <h4 class="text-sm font-bold text-slate-800 mt-1">Prototipleme</h4>
-                                <p class="text-xs text-slate-500 mt-0.5">Breadboard kurulumu, çakmak gazı testi.</p>
+                    </div>
+
+                    <div onclick="app.toggleDetail('phase2')" class="group relative pl-8 cursor-pointer">
+                        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white border-2 border-slate-300 group-hover:border-sky-500 transition-colors"></div>
+                        <div class="flex flex-col">
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wide">Hafta 3-5</span>
+                            <h4 class="text-sm font-bold text-slate-700 group-hover:text-sky-600 transition-colors">Prototipleme</h4>
+                            <div id="info-phase2" class="details-content mt-2">
+                                <ul class="text-xs text-slate-500 list-disc list-inside">
+                                    <li>Breadboard kurulumu</li>
+                                    <li>Çakmak gazı ile "Canlılık" testi</li>
+                                    <li>Analog okuma kalibrasyonu</li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="flex gap-4 relative">
-                            <div class="w-6 h-6 rounded-full bg-white border-4 border-slate-300 shadow-sm shrink-0 z-10"></div>
-                            <div class="-mt-1">
-                                <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">6-9. Hafta</span>
-                                <h4 class="text-sm font-bold text-slate-800 mt-1">IoT & Yazılım</h4>
-                                <p class="text-xs text-slate-500 mt-0.5">MQTT ve Mobil Uygulama (Flutter).</p>
+                    </div>
+
+                    <div onclick="app.toggleDetail('phase3')" class="group relative pl-8 cursor-pointer">
+                        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white border-2 border-slate-300 group-hover:border-sky-500 transition-colors"></div>
+                        <div class="flex flex-col">
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wide">Hafta 6-9</span>
+                            <h4 class="text-sm font-bold text-slate-700 group-hover:text-sky-600 transition-colors">Yazılım & IoT</h4>
+                            <div id="info-phase3" class="details-content mt-2">
+                                <ul class="text-xs text-slate-500 list-disc list-inside">
+                                    <li>MQTT Broker kurulumu</li>
+                                    <li>Flutter arayüz kodlaması</li>
+                                    <li>Firebase bildirim entegrasyonu</li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="flex gap-4 relative">
-                            <div class="w-6 h-6 rounded-full bg-white border-4 border-slate-300 shadow-sm shrink-0 z-10"></div>
-                            <div class="-mt-1">
-                                <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">10-12. Hafta</span>
-                                <h4 class="text-sm font-bold text-slate-800 mt-1">Saha Testi</h4>
-                                <p class="text-xs text-slate-500 mt-0.5">Kutu tasarımı ve gerçek ortam testi.</p>
+                    </div>
+
+                    <div onclick="app.toggleDetail('phase4')" class="group relative pl-8 cursor-pointer">
+                        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white border-2 border-slate-300 group-hover:border-sky-500 transition-colors"></div>
+                        <div class="flex flex-col">
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wide">Hafta 10-12</span>
+                            <h4 class="text-sm font-bold text-slate-700 group-hover:text-sky-600 transition-colors">Saha Testi & Kutu</h4>
+                            <div id="info-phase4" class="details-content mt-2">
+                                <ul class="text-xs text-slate-500 list-disc list-inside">
+                                    <li>PCB tasarımı</li>
+                                    <li>3D hava akışlı kutu basımı</li>
+                                    <li>Gerçek ortam pilot testi</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -541,14 +439,10 @@
                 
                 if (info.classList.contains('open')) {
                     info.classList.remove('open');
-                    icon.style.transform = 'rotate(0deg)';
+                    if(icon) icon.style.transform = 'rotate(0deg)';
                 } else {
-                    // Diğer açık olanları kapat (Opsiyonel, daha temiz görünüm için)
-                    // document.querySelectorAll('.details-content.open').forEach(el => el.classList.remove('open'));
-                    // document.querySelectorAll('i[id^="icon-"]').forEach(el => el.style.transform = 'rotate(0deg)');
-                    
                     info.classList.add('open');
-                    icon.style.transform = 'rotate(180deg)';
+                    if(icon) icon.style.transform = 'rotate(180deg)';
                 }
             },
 
